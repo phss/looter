@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'rake'
 gem 'sinatra'
-gem 'rspec', :require => 'spec'
+
+gem 'rspec', :group => 'test'
+gem 'cucumber', :group => 'test'
