@@ -3,7 +3,11 @@ require 'sinatra'
 class LooterApp < Sinatra::Base
 
   get '/' do
-    "Nothing to see here yet"
+    erb :index
+  end
+
+  get '/start' do
+    erb :start    
   end
 
 end

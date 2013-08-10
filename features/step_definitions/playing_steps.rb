@@ -3,9 +3,9 @@ Given(/^I go to the main page$/) do
 end
 
 When(/^I start a game$/) do
-  click_button 'Start Game'
+  click_link 'Start Game'
 end
 
 Then(/^I have the question "(.*?)"$/) do |question|
-  pending
+  find('.question').should have_content(question)
 end
