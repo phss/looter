@@ -1,11 +1,16 @@
-Given(/^I go to the main page$/) do
+When(/^I start a sample game$/) do
   visit '/' 
-end
-
-When(/^I start a game$/) do
   click_link 'Start Game'
 end
 
-Then(/^I have the question "(.*?)"$/) do |question|
+Then(/^I am asked the question "(.*?)"$/) do |question|
   find('.question').should have_content(question)
+end
+
+When(/^I answer "(.*?)"$/) do |answer|
+  fill_in('answer', :with => answer)
+end
+
+Then(/^I am in room "(.*?)"$/) do |title|
+  find('.title').should have_content(title)
 end
