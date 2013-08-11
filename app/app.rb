@@ -10,4 +10,7 @@ class LooterApp < Sinatra::Base
     erb :start    
   end
 
+  post '/answer' do
+  end
+
 end

@@ -9,6 +9,7 @@ end
 
 When(/^I answer "(.*?)"$/) do |answer|
   fill_in('answer', :with => answer)
+  click_button('I said')
 end
 
 Then(/^I am in room "(.*?)"$/) do |title|
