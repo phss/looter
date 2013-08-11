@@ -12,7 +12,7 @@ class LooterApp < Sinatra::Base
   end
 
   post '/start' do
-    session[:game_id] = settings.adventure.new
+    session[:game_id] = settings.adventure.new(params[:player_name])
     
     redirect '/room'
   end
