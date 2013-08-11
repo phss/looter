@@ -5,7 +5,7 @@ describe 'Looter' do
 
   def app
     app = LooterApp.new
-    app.settings.set :adventure, adventure
+    app.settings.set :adventure_service, adventure
     return app
   end
 

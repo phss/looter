@@ -1,7 +1,13 @@
 require 'sinatra'
 
 class LooterApp < Sinatra::Base
-  enable :sessions
+  configure do
+    enable :sessions
+  end
+
+  def adventure
+    settings.adventure_service
+  end
 
   get '/' do
     erb :index
@@ -12,7 +18,7 @@ class LooterApp < Sinatra::Base
   end
 
   post '/start' do
-    session[:game_id] = settings.adventure.new(params[:player_name])
+    session[:game_id] = adventure.new(params[:player_name])
     
     redirect '/room'
   end
