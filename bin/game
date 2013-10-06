@@ -1,4 +1,9 @@
 #!/usr/bin/env ruby
 
+require_relative '../lib/looter'
+
 puts "Start new game"
 puts "Exit"
+
+game = Game.new
+game.play
