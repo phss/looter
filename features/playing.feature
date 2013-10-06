@@ -4,7 +4,7 @@ Feature: Playing
   I want to start a new adventure
 
   Scenario: starting a new game
-    Given I start a sample game
-      And I am asked the question "What is your name, adventurer?"
-     When I answer "Spartacus"
-     Then I am in room "Entrance"
+    When I start the game
+    Then I should see the options
+      | Start new game |
+      | Exit           |

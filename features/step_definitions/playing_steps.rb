@@ -1,15 +1,10 @@
-When(/^I start a sample game$/) do
-  pending
+When(/^I start the game$/) do
+  @game_process = IO.popen('./bin/game')
 end
 
-Then(/^I am asked the question "(.*?)"$/) do |question|
-  pending
-end
+Then(/^I should see the options$/) do |table|
+  expected_options = table.raw.map(&:first)
+  actual_options = @game_process.readlines.map(&:chomp)
 
-When(/^I answer "(.*?)"$/) do |answer|
-  pending
-end
-
-Then(/^I am in room "(.*?)"$/) do |title|
-  pending
+  actual_options.should =~ expected_options
 end
