@@ -3,10 +3,10 @@ require 'spec_helper'
 describe Game do  
   let(:ui) { double() }
 
-  it 'displays game title when starting the game' do
-    ui.should_receive(:display_title).with('My great adventure')
+  it 'displays main title when starting the game' do
+    ui.should_receive(:display_title).with('Looter')
 
-    game = Game.new(ui, 'My great adventure')
+    game = Game.new(ui)
 
     game.play
   end

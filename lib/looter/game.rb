@@ -1,11 +1,11 @@
 class Game
 
-  def initialize(ui, title)
-    @ui, @title = ui, title
+  def initialize(ui)
+    @ui = ui
   end
 
   def play
-    @ui.display_title(@title)
+    @ui.display_title('Looter')
   end
   
 end
