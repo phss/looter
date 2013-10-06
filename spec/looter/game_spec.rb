@@ -1,13 +1,12 @@
 require 'spec_helper'
 
 describe Game do  
-  let(:ui) { double() }
+  let(:ui) { double('ui', :display_title => true) }
+  let(:game) { Game.new(ui) }
 
   it 'displays main title when starting the game' do
-    ui.should_receive(:display_title).with('Looter')
-
-    game = Game.new(ui)
-
     game.play
+
+    ui.should have_received(:display_title).with('Looter')
   end
 end
