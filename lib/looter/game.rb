@@ -4,8 +4,9 @@ class Game
     @ui = ui
   end
 
-  def play
+  def play(adventure)
     @ui.display_title('Looter')
+    @ui.display_subtitle(adventure.title)
   end
   
 end
