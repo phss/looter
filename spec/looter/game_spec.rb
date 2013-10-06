@@ -20,5 +20,11 @@ describe Game do
       ui.should have_received(:display_subtitle).with('My great adventure')
     end
 
+    it 'displays initial options' do
+      game.play(sample_adventure)
+
+      ui.should have_received(:display_options).with(['Start new game', 'Exit'])
+    end
+
   end
 end
