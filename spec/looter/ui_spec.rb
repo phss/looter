@@ -4,6 +4,7 @@ describe UI do
   let(:output) { StringIO.new }
   let(:ui) { UI.new(output) }
 
+  # TODO clean this up
   it 'displays title' do
     ui.display_title("Some interesting title")
 
@@ -14,6 +15,12 @@ describe UI do
     ui.display_subtitle("Some boring subtitle")
 
     output.string.should == "- Some boring subtitle -\n"
+  end
+
+  it 'displays options' do
+    ui.choose_option(['First', 'Second', 'Third'])
+
+    output.string.should == "1- First\n2- Second\n3- Third\n"
   end
 
 end
