@@ -23,7 +23,7 @@ describe Game do
     it 'displays initial options' do
       game.play(sample_adventure)
 
-      ui.should have_received(:display_options).with(['Start new game', 'Exit'])
+      ui.should have_received(:choose_option).with(['Start new game', 'Exit'])
     end
 
   end
