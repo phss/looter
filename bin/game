@@ -4,9 +4,9 @@ require_relative '../lib/looter'
 
 # Extract to a proper class
 Adventure = Struct.new(:title)
-adventure = Adventure.new(:title => 'Not important')
+adventure = Adventure.new('Not important')
 
-ui = UI.new
+ui = UI.new($stdout)
 
 game = Game.new(ui)
 game.play(adventure)
