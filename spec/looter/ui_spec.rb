@@ -10,4 +10,10 @@ describe UI do
     output.string.should == "# Some interesting title #\n"
   end
 
+  it 'displays subtitle' do
+    ui.display_subtitle("Some boring subtitle")
+
+    output.string.should == "- Some boring subtitle -\n"
+  end
+
 end

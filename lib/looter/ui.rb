@@ -8,4 +8,8 @@ class UI
     @output.puts "# #{string} #"
   end
   
+  def display_subtitle(string)
+    @output.puts "- #{string} -"
+  end
+  
 end
