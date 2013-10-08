@@ -14,18 +14,20 @@ def as_list(table)
 end
 
 class GameProcess
+  OPTION_REGEXP = /^\d- (.*)/
+
   def initialize(process)
     @process = process
   end
 
   def read_options
-    options = []
-    option_regepx = /^\d- (.*)/
-    @process.readlines.map(&:chomp).each do |line|
-      if option_regepx.match(line)
-        options << option_regepx.match(line)[1]
-      end
-    end
-    return options
+    option_lines = output_lines.select { |line| OPTION_REGEXP.match(line) }
+    return option_lines.map { |line| OPTION_REGEXP.match(line)[1] }
+  end
+
+ private
+
+  def output_lines
+    @process.readlines.map(&:chomp)
   end
 end
