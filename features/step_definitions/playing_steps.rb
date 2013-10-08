@@ -19,6 +19,13 @@ class GameProcess
   end
 
   def read_options
-    @process.readlines.map(&:chomp)
+    options = []
+    option_regepx = /^\d- (.*)/
+    @process.readlines.map(&:chomp).each do |line|
+      if option_regepx.match(line)
+        options << option_regepx.match(line)[1]
+      end
+    end
+    return options
   end
 end
