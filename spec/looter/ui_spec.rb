@@ -4,7 +4,6 @@ describe UI do
   let(:output) { StringIO.new }
   let(:ui) { UI.new(output) }
 
-  # TODO clean this up
   it 'displays title' do
     ui.display_title("Some interesting title")
 
