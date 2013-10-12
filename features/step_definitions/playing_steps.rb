@@ -32,16 +32,19 @@ class GameProcess
   end
 
   def read_title
-    option_lines = output_lines.select { |line| TITLE_REGEXP.match(line) }
-    return option_lines.map { |line| TITLE_REGEXP.match(line)[1] }.first
+    read_lines_matching(TITLE_REGEXP).first
   end
 
   def read_options
-    option_lines = output_lines.select { |line| OPTION_REGEXP.match(line) }
-    return option_lines.map { |line| OPTION_REGEXP.match(line)[1] }
+    read_lines_matching(OPTION_REGEXP)
   end
 
  private
+
+  def read_lines_matching(regexp)
+    matching_lines = output_lines.select { |line| regexp.match(line) }
+    return matching_lines.map { |line| regexp.match(line)[1] }
+  end
 
   def output_lines
     @process.readlines.map(&:chomp)
