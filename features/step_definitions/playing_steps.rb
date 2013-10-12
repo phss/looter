@@ -9,7 +9,9 @@ Then(/^I should see game title "(.*?)"$/) do |expected_title|
 end
 
 Then(/^I should see aventure title "(.*?)"$/) do |expected_title|
-  pending # express the regexp above with the code you wish you had
+  actual_title = @game_process.read_subtitle
+
+  actual_title.should == expected_title
 end
 
 Then(/^I should see the options$/) do |table|
@@ -25,14 +27,19 @@ end
 
 class GameProcess
   TITLE_REGEXP = /^# (.*) #/
+  SUBTITLE_REGEXP = /^- (.*) -/
   OPTION_REGEXP = /^\d- (.*)/
 
   def initialize(process)
-    @process = process
+    @raw_lines = process.readlines.map(&:chomp)
   end
 
   def read_title
     read_lines_matching(TITLE_REGEXP).first
+  end
+
+  def read_subtitle
+    read_lines_matching(SUBTITLE_REGEXP).first
   end
 
   def read_options
@@ -47,6 +54,6 @@ class GameProcess
   end
 
   def output_lines
-    @process.readlines.map(&:chomp)
+    @raw_lines
   end
 end

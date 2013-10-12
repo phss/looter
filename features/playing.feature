@@ -6,7 +6,7 @@ Feature: Playing
   Scenario: starting a new game
     When I start the game
     Then I should see game title "Looter"
-     And I should see aventure title "Adventure Cave"
+     And I should see aventure title "Not important"
      And I should see the options
       | Start new game |
       | Exit           |
