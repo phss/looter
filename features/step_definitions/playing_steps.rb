@@ -1,5 +1,5 @@
 When(/^I start the game "(.*?)"$/) do |game_file|
-  @game_process = GameProcess.new(IO.popen('./bin/game games/#{game_file}'))
+  @game_process = GameProcess.new(IO.popen("./bin/game games/#{game_file}"))
 end
 
 Then(/^I should see game title "(.*?)"$/) do |expected_title|
