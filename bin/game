@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/looter'
+require 'YAML'
 
-# Extract to a proper class
-Adventure = Struct.new(:title)
-adventure = Adventure.new('Not important')
+adventure_file_path = ARGV.first
+adventure_raw = YAML.load_file(adventure_file_path)
+
 
 ui = UI.new($stdout)
 
