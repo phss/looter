@@ -1,6 +1,7 @@
 class UI
 
-  def initialize(output)
+  def initialize(input, output)
+    @input = input
     @output = output
   end
 
