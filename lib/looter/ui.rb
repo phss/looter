@@ -5,22 +5,20 @@ class UI
   end
 
   def display_title(string)
-    display "# #{string} #"
+    display_message "# #{string} #"
   end
   
   def display_subtitle(string)
-    display "- #{string} -"
+    display_message "- #{string} -"
   end
 
   def choose_option(options)
     options.each_with_index do |option, index|
-      display "#{index+1}- #{option}"
+      display_message "#{index+1}- #{option}"
     end
   end
 
- private
-
-  def display(string)
+  def display_message(string)
     @output.puts string
   end
   

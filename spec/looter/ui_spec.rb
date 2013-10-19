@@ -22,4 +22,10 @@ describe UI do
     output.string.should == "1- First\n2- Second\n3- Third\n"
   end
 
+  it 'displays a message' do
+    ui.display_message('Some message')
+
+    output.string.should == "Some message\n"
+  end
+
 end
