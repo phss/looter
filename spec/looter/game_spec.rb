@@ -26,5 +26,13 @@ describe Game do
       ui.should have_received(:choose_option).with(['Start new game', 'Exit'])
     end
 
+    it 'starts game when new game is choosen' do
+      ui.should_receive(:choose_option).and_return(0)
+
+      game.play(sample_adventure)
+      
+      ui.should have_received(:display_message).with("What's your name, adventurer?")
+    end
+
   end
 end
