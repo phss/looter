@@ -4,7 +4,8 @@ class GameProcess
   OPTION_REGEXP = /^\d- (.*)/
 
   def initialize(process)
-    @raw_lines = process.readlines.map(&:chomp)
+    @process = process
+    @raw_lines = @process.readlines.map(&:chomp)
   end
 
   def read_title
@@ -19,6 +20,11 @@ class GameProcess
     read_lines_matching(OPTION_REGEXP)
   end
 
+  def choose_option(option)
+    option_number = read_options.index(option)
+    write(option_number)
+  end
+
  private
 
   def read_lines_matching(regexp)
@@ -28,5 +34,9 @@ class GameProcess
 
   def output_lines
     @raw_lines
+  end
+
+  def write(output)
+    @process.puts(output)
   end
 end

@@ -1,5 +1,5 @@
 When(/^I start the game "(.*?)"$/) do |game_file|
-  @game_process = GameProcess.new(IO.popen("./bin/game games/#{game_file}"))
+  @game_process = GameProcess.new(IO.popen("./bin/game games/#{game_file}", 'r+'))
 end
 
 Then(/^I should see game title "(.*?)"$/) do |expected_title|
@@ -22,7 +22,7 @@ Then(/^I should see the options$/) do |table|
 end
 
 When(/^I choose "(.*?)"$/) do |option|
-  pending
+  @game_process.choose_option(option)
 end
 
 Then(/^I should see question "(.*?)"$/) do |expected_question|
