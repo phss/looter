@@ -34,5 +34,13 @@ describe Game do
       ui.should have_received(:display_message).with("What's your name, adventurer?")
     end
 
+    it 'exits games when exit is choosen' do
+      ui.should_receive(:choose_option).and_return(1)
+
+      game.play(sample_adventure)
+      
+      ui.should_not have_received(:display_message).with("What's your name, adventurer?")
+    end
+
   end
 end
