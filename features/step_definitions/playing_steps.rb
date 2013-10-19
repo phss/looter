@@ -21,6 +21,14 @@ Then(/^I should see the options$/) do |table|
   actual_options.should =~ expected_options
 end
 
+When(/^I choose "(.*?)"$/) do |option|
+  pending
+end
+
+Then(/^I should see question "(.*?)"$/) do |expected_question|
+  pending
+end
+
 def as_list(table)
   table.raw.map(&:first)
 end
