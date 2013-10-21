@@ -27,7 +27,9 @@ When(/^I choose "(.*?)"$/) do |option|
 end
 
 Then(/^I should see question "(.*?)"$/) do |expected_question|
-  pending
+  actual_question = @game_process.read_last_message
+
+  actual_question.should == expected_question
 end
 
 def as_list(table)
