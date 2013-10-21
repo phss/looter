@@ -8,7 +8,7 @@ adventure_raw = YAML.load_file(adventure_file_path)
 
 adventure = Adventure.from_hash(adventure_raw)
 
-ui = UI.new($stdout)
+ui = UI.new($stdin, $stdout)
 
 game = Game.new(ui)
 game.play(adventure)
