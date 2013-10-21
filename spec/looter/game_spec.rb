@@ -27,7 +27,7 @@ describe Game do
     end
 
     it 'starts game when new game is choosen' do
-      ui.should_receive(:choose_option).and_return(0)
+      ui.should_receive(:choose_option).and_return(1)
 
       game.play(sample_adventure)
       
@@ -35,7 +35,7 @@ describe Game do
     end
 
     it 'exits games when exit is choosen' do
-      ui.should_receive(:choose_option).and_return(1)
+      ui.should_receive(:choose_option).and_return(2)
 
       game.play(sample_adventure)
       

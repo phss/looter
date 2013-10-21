@@ -8,7 +8,7 @@ class Game
     @ui.display_title('Looter')
     @ui.display_subtitle(adventure.title)
     option = @ui.choose_option(['Start new game', 'Exit'])
-    if option == 0
+    if option == 1
       @ui.display_message("What's your name, adventurer?")
     end
   end
