@@ -23,12 +23,12 @@ describe UI do
     output.string.should == "1- First\n2- Second\n3- Third\n"
   end
 
-  it 'chooses an option' do
-    input << 'Second'
+  it 'chooses an option by the number' do
+    input.string = '1'
     
-    choosen_option = ui.choosen_option(['First', 'Second', 'Third'])
+    choosen_option = ui.choose_option(['First', 'Second', 'Third'])
 
-    expect(choosen_option).should == 1
+    choosen_option.should == 1
   end
 
   it 'displays a message' do
