@@ -3,9 +3,10 @@ class GameProcess
   SUBTITLE_REGEXP = /^- (.*) -/
   OPTION_REGEXP = /^\d- (.*)/
 
-  def initialize(process)
-    @process = process
-    @raw_lines = @process.readlines.map(&:chomp)
+  def initialize(game_command)
+    @process_input = IO.popen("#{game_command} > game_output.log", 'w')
+    @process_output = File.open('game_output.log', 'r')
+    @raw_lines = @process_output.readlines.map(&:chomp)
   end
 
   def read_title
@@ -37,6 +38,6 @@ class GameProcess
   end
 
   def write(output)
-    @process.puts(output)
+    @process_input.puts(output)
   end
 end
