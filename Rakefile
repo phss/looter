@@ -11,3 +11,8 @@ end
 Cucumber::Rake::Task.new(:features) do |t|
   t.cucumber_opts = "features --format pretty"
 end
+
+desc "Run all tests"
+task "test:all" => [:spec, :features]
+
+task :default => ["test:all"]
