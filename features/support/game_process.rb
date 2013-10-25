@@ -26,6 +26,10 @@ class GameProcess
     write(option_number)
   end
 
+  def read_last_message
+    output_lines.last
+  end
+
  private
 
   def read_lines_matching(regexp)
