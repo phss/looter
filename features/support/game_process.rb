@@ -6,7 +6,7 @@ class GameProcess
   def initialize(game_command)
     @process_input = IO.popen("#{game_command} > game_output.log", 'w')
     @process_output = File.open('game_output.log', 'r')
-    @raw_lines = @process_output.readlines.map(&:chomp)
+    read_raw_output
   end
 
   def read_title
@@ -22,7 +22,7 @@ class GameProcess
   end
 
   def choose_option(option)
-    option_number = read_options.index(option)
+    option_number = read_options.index(option) + 1
     write(option_number)
   end
 
@@ -31,6 +31,14 @@ class GameProcess
   end
 
  private
+
+  def read_raw_output
+    output = []
+    while output.empty?
+      output = @process_output.readlines
+    end
+    @raw_lines = output.map(&:chomp)
+  end
 
   def read_lines_matching(regexp)
     matching_lines = output_lines.select { |line| regexp.match(line) }
