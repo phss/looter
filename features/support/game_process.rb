@@ -6,7 +6,7 @@ class GameProcess
   def initialize(game_command)
     @process_input = IO.popen("#{game_command} > game_output.log", 'w')
     @process_output = File.open('game_output.log', 'r')
-    read_raw_output
+    update_raw_output
   end
 
   def read_title
@@ -27,12 +27,13 @@ class GameProcess
   end
 
   def read_last_message
+    update_raw_output
     output_lines.last
   end
 
  private
 
-  def read_raw_output
+  def update_raw_output
     output = []
     while output.empty?
       output = @process_output.readlines
