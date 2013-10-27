@@ -15,7 +15,7 @@ class UI
 
   def choose_option(options)
     display_options(options)
-    return @input.gets.to_i
+    return read.to_i
   end
 
   def display_message(string)
@@ -28,6 +28,10 @@ class UI
     options.each_with_index do |option, index|
       display_message "#{index+1}- #{option}"
     end
+  end
+
+  def read
+    @input.gets
   end
 
 end
