@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Game do  
   let(:ui) { double('ui').as_null_object }
   let(:game) { Game.new(ui) }
-  let(:sample_adventure) { double('adventure', :title => 'My great adventure') }
+  let(:sample_adventure) { Adventure.new('My great adventure') }
 
 
   describe '(starting)' do
