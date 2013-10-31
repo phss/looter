@@ -6,7 +6,7 @@ describe Game do
   let(:sample_adventure) { Adventure.new('My great adventure') }
 
 
-  describe '(starting)' do
+  describe '(intro)' do
 
     it 'displays main title' do
       game.play(sample_adventure)
@@ -25,6 +25,9 @@ describe Game do
 
       ui.should have_received(:choose_option).with(['Start new game', 'Exit'])
     end
+  end
+
+  describe '(main menu)' do
 
     it 'starts game when new game is choosen' do
       ui.should_receive(:choose_option).and_return(1)
