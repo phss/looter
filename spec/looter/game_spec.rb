@@ -8,23 +8,16 @@ describe Game do
 
   describe '(intro)' do
 
-    it 'displays main title' do
+    it 'displays titles and main menu' do
       game.play(sample_adventure)
 
-      ui.should have_received(:display_title).with('Looter')
+      ui.should have_received(:display_screen).with({
+        :title => 'Looter',
+        :subtitle => 'My great adventure',
+        :options => ['Start new game', 'Exit']
+      })
     end
 
-    it 'displays adventure title' do
-      game.play(sample_adventure)
-
-      ui.should have_received(:display_subtitle).with('My great adventure')
-    end
-
-    it 'displays initial options' do
-      game.play(sample_adventure)
-
-      ui.should have_received(:choose_option).with(['Start new game', 'Exit'])
-    end
   end
 
   describe '(main menu)' do
