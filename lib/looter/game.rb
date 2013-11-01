@@ -5,8 +5,11 @@ class Game
   end
 
   def play(adventure)
-    @ui.display_title('Looter')
-    @ui.display_subtitle(adventure.title)
+    @ui.display_screen(
+      :title => 'Looter',
+      :subtitle => adventure.title,
+      :options => ['Start new game', 'Exit'])
+
     option = @ui.choose_option(['Start new game', 'Exit'])
     if option == 1
       @ui.display_message("What's your name, adventurer?")
