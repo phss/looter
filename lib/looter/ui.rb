@@ -5,6 +5,12 @@ class UI
     @output = output
   end
 
+  def display_screen(options)
+    display_title(options[:title])
+    display_subtitle(options[:subtitle])
+    display_options(options[:options])
+  end
+
   def display_title(string)
     display_message "# #{string} #"
   end

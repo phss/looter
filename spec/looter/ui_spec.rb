@@ -5,6 +5,15 @@ describe UI do
   let(:output) { StringIO.new }
   let(:ui) { UI.new(input, output) }
 
+  it 'displays screen' do
+    ui.display_screen(
+      :title => 'My title',
+      :subtitle => 'Your subtitle',
+      :options => ['One', 'Two'])
+
+    output.string.should == "# My title #\n- Your subtitle -\n1- One\n2- Two\n"
+  end
+
   it 'displays title' do
     ui.display_title("Some interesting title")
 
