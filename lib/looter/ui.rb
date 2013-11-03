@@ -12,7 +12,6 @@ class UI
   end
 
   def choose_option(options)
-    display_options(options)
     return read.to_i
   end
 
