@@ -14,24 +14,6 @@ describe UI do
     output.string.should == "# My title #\n- Your subtitle -\n1- One\n2- Two\n"
   end
 
-  it 'displays title' do
-    ui.display_title("Some interesting title")
-
-    output.string.should == "# Some interesting title #\n"
-  end
-
-  it 'displays subtitle' do
-    ui.display_subtitle("Some boring subtitle")
-
-    output.string.should == "- Some boring subtitle -\n"
-  end
-
-  it 'displays options' do
-    ui.choose_option(['First', 'Second', 'Third'])
-
-    output.string.should == "1- First\n2- Second\n3- Third\n"
-  end
-
   it 'chooses an option by the number' do
     input.string = '1'
     

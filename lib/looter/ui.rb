@@ -11,14 +11,6 @@ class UI
     display_options(options[:options])
   end
 
-  def display_title(string)
-    display_message "# #{string} #"
-  end
-  
-  def display_subtitle(string)
-    display_message "- #{string} -"
-  end
-
   def choose_option(options)
     display_options(options)
     return read.to_i
@@ -30,6 +22,14 @@ class UI
 
  private
   
+  def display_title(string)
+    display_message "# #{string} #"
+  end
+  
+  def display_subtitle(string)
+    display_message "- #{string} -"
+  end
+
   def display_options(options)
     options.each_with_index do |option, index|
       display_message "#{index+1}- #{option}"
