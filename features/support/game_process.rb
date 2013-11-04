@@ -35,8 +35,10 @@ class GameProcess
 
   def update_raw_output
     output = []
-    while output.empty?
+    tries = 0
+    while output.empty? && tries < 10
       output = @process_output.readlines
+      tries += 1
     end
     @raw_lines = output.map(&:chomp)
   end
