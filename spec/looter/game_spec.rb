@@ -23,7 +23,7 @@ describe Game do
   describe '(main menu)' do
 
     it 'starts game when new game is choosen' do
-      ui.should_receive(:choose_option).and_return(1)
+      ui.should_receive(:choose_option).and_return(:start)
 
       game.play(sample_adventure)
       
@@ -31,7 +31,7 @@ describe Game do
     end
 
     it 'exits games when exit is choosen' do
-      ui.should_receive(:choose_option).and_return(2)
+      ui.should_receive(:choose_option).and_return(:exit)
 
       game.play(sample_adventure)
       
