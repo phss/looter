@@ -9,10 +9,10 @@ RSpec::Core::RakeTask.new(:spec) do |t|
 end
 
 Cucumber::Rake::Task.new(:features) do |t|
-  t.cucumber_opts = "features --format pretty"
+  t.cucumber_opts = 'features --format pretty'
 end
 
-desc "Run all tests"
-task "test:all" => [:spec, :features]
+desc 'Run all tests'
+task 'test:all' => [:spec, :features]
 
-task :default => ["test:all"]
+task :default => ['test:all']
