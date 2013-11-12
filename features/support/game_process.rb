@@ -6,6 +6,7 @@ class GameProcess
   def initialize(game_command)
     @process_input = IO.popen("#{game_command} > game_output.log", 'w')
     @process_output = File.open('game_output.log', 'r')
+    @raw_lines = []
     update_raw_output
   end
 
@@ -36,11 +37,11 @@ class GameProcess
   def update_raw_output
     output = []
     tries = 0
-    while output.empty? && tries < 10
+    while output.empty? && tries < 1000
       output = @process_output.readlines
       tries += 1
     end
-    @raw_lines = output.map(&:chomp)
+    @raw_lines += output.map(&:chomp)
   end
 
   def read_lines_matching(regexp)
