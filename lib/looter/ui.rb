@@ -12,7 +12,8 @@ class UI
   end
 
   def choose_option(options)
-    return read.to_i
+    selected_option_index = read.to_i
+    return options[selected_option_index - 1]
   end
 
   def display_message(string)

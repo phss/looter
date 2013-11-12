@@ -14,12 +14,12 @@ describe UI do
     output.string.should == "# My title #\n- Your subtitle -\n1- One\n2- Two\n"
   end
 
-  it 'chooses an option by the number' do
+  it 'chooses an option by its number' do
     input.string = '1'
     
-    choosen_option = ui.choose_option(['First', 'Second', 'Third'])
+    choosen_option = ui.choose_option([:first, :second, :third])
 
-    choosen_option.should == 1
+    choosen_option.should == :first
   end
 
   it 'displays a message' do
