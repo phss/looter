@@ -69,10 +69,19 @@ class ShellProcess
   end
 
   def read_all_available
+    output = []
+    retries = 0
+
     begin
-      @master.read_nonblock(1000).split("\n").map(&:chomp)
-    rescue Errno::EAGAIN => e
-      retry
+      while true
+        output += @master.read_nonblock(100000).split("\n").map(&:chomp)
+        retries = 0
+      end
+    rescue
+      retries += 1
+      retry if output.empty? || retries < 1000
     end
+
+    return output    
   end
 end
