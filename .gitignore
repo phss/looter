@@ -19,5 +19,6 @@ _yardoc
 doc/
 
 *.swp
+*~
 .vagrant
 Vagrantfile
