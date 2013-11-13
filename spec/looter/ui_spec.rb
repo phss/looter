@@ -14,18 +14,25 @@ describe UI do
     output.string.should == "# My title #\n- Your subtitle -\n1- One\n2- Two\n"
   end
 
-  it 'chooses an option by its number' do
-    input.string = '1'
-    
-    choosen_option = ui.choose_option([:first, :second, :third])
-
-    choosen_option.should == :first
-  end
-
   it 'displays a message' do
     ui.display_message('Some message')
 
     output.string.should == "Some message\n"
+  end
+
+  describe '(choosing an option)' do
+    it 'chooses an option by its number' do
+      options = [:first, :second, :third]
+
+      input.string = '1'
+      ui.choose_option(options).should == :first
+
+      input.string = '2'
+      ui.choose_option(options).should == :second
+
+      input.string = '3'
+      ui.choose_option(options).should == :third
+    end
   end
 
 end
