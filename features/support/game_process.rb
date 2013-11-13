@@ -1,11 +1,12 @@
+require 'pty'
+
 class GameProcess
   TITLE_REGEXP = /^# (.*) #/
   SUBTITLE_REGEXP = /^- (.*) -/
   OPTION_REGEXP = /^\d- (.*)/
 
   def initialize(game_command)
-    @process_input = IO.popen("#{game_command} > game_output.log", 'w')
-    @process_output = File.open('game_output.log', 'r')
+    @process = ShellProcess.new(game_command)
     @raw_lines = []
     update_raw_output
   end
@@ -35,13 +36,7 @@ class GameProcess
  private
 
   def update_raw_output
-    output = []
-    tries = 0
-    while output.empty? && tries < 1000
-      output = @process_output.readlines
-      tries += 1
-    end
-    @raw_lines += output.map(&:chomp)
+    @raw_lines = @process.read_all_available
   end
 
   def read_lines_matching(regexp)
@@ -54,6 +49,30 @@ class GameProcess
   end
 
   def write(output)
-    @process_input.puts(output)
+    @process.write(output)
+  end
+end
+
+
+class ShellProcess
+  def initialize(command)
+    @master, slave = PTY.open
+    read, @write = IO.pipe
+
+    spawn(command, :in=>read, :out=>slave)
+    slave.close
+    read.close
+  end
+
+  def write(string)
+    @write.puts(string)
+  end
+
+  def read_all_available
+    begin
+      @master.read_nonblock(1000).split("\n").map(&:chomp)
+    rescue Errno::EAGAIN => e
+      retry
+    end
   end
 end
