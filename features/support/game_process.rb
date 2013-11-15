@@ -28,6 +28,10 @@ class GameProcess
     write(option_number)
   end
 
+  def write(output)
+    @process.write(output)
+  end
+
   def read_last_message
     update_raw_output
     output_lines.last
@@ -48,9 +52,6 @@ class GameProcess
     @raw_lines
   end
 
-  def write(output)
-    @process.write(output)
-  end
 end
 
 

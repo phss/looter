@@ -32,11 +32,13 @@ Then(/^I should see question "(.*?)"$/) do |expected_question|
 end
 
 When(/^I answer "(.*?)"$/) do |answer|
-  pending
+  @game_process.write(answer)
 end
 
-Then(/^I should be in room "(.*?)"$/) do |room_name|
-  pending
+Then(/^I should be in room "(.*?)"$/) do |expected_room_name|
+  actual_room_name = @game_process.read_title
+
+  actual_room_name.should == expected_room_name
 end
 
 def as_list(table)
