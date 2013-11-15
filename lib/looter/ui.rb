@@ -12,9 +12,9 @@ class UI
   end
 
   def choose_option(options)
-    selected_option_index = read.to_i
-    return nil if selected_option_index < 1
-    return options[selected_option_index - 1]
+    selected_option_index = read.to_i - 1
+    return nil if selected_option_index < 0
+    return options[selected_option_index]
   end
 
   def display_message(string)
