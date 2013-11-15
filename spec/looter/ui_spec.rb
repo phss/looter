@@ -21,9 +21,9 @@ describe UI do
   end
 
   describe '(choosing an option)' do
-    it 'chooses an option by its number' do
-      options = [:first, :second, :third]
+    let(:options) { [:first, :second, :third] }
 
+    it 'chooses an option by its number' do
       input.string = '1'
       ui.choose_option(options).should == :first
 
@@ -32,6 +32,14 @@ describe UI do
 
       input.string = '3'
       ui.choose_option(options).should == :third
+    end
+
+    it 'returns nil when choosen option is out of range' do
+      input.string = '0'
+      ui.choose_option(options).should == nil
+
+      input.string = '4'
+      ui.choose_option(options).should == nil
     end
   end
 

@@ -13,6 +13,7 @@ class UI
 
   def choose_option(options)
     selected_option_index = read.to_i
+    return nil if selected_option_index < 1
     return options[selected_option_index - 1]
   end
 
