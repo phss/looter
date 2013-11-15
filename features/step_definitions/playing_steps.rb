@@ -31,6 +31,14 @@ Then(/^I should see question "(.*?)"$/) do |expected_question|
   actual_question.should == expected_question
 end
 
+When(/^I answer "(.*?)"$/) do |answer|
+  pending
+end
+
+Then(/^I should be in room "(.*?)"$/) do |room_name|
+  pending
+end
+
 def as_list(table)
   table.raw.map(&:first)
 end

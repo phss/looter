@@ -3,7 +3,7 @@ Feature: Playing
   As a player
   I want to start a new adventure
 
-  Scenario: intro
+  Scenario: viewing intro and main menu
     When I start the game "adventure_cave.yaml"
     Then I should see game title "Looter"
      And I should see aventure title "Adventure Cave"
@@ -15,3 +15,9 @@ Feature: Playing
     Given I start the game "adventure_cave.yaml"
      When I choose "Start new game"
      Then I should see question "What's your name, adventurer?"
+
+  Scenario: entering the first room
+    Given I start the game "adventure_cave.yaml"
+      And I choose "Start new game"
+     When I answer "Squeak"
+     Then I should be in room "Entrance"
