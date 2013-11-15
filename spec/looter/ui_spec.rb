@@ -41,6 +41,11 @@ describe UI do
       input.string = '4'
       ui.choose_option(options).should == nil
     end
+
+    it 'returns nil when choosen option is not a number' do
+      input.string = 'not a number'
+      ui.choose_option(options).should == nil
+    end
   end
 
 end
