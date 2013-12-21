@@ -14,10 +14,4 @@ Feature: Playing
   Scenario: starting a new game
     Given I start the game "adventure_cave.yaml"
      When I choose "Start new game"
-     Then I should see question "What's your name, adventurer?"
-
-  Scenario: entering the first room
-    Given I start the game "adventure_cave.yaml"
-      And I choose "Start new game"
-     When I answer "Squeak"
      Then I should be in room "Entrance"
