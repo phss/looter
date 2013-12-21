@@ -11,9 +11,12 @@ class Game
       :options => ['Start new game', 'Exit'])
 
     option = @ui.choose_option([:start, :exit])
-    if option == :start
-      @ui.display_message("What's your name, adventurer?")
+    if option == :exit
+      @ui.display_message("Bye!")
+      return
     end
+
+    @ui.display_message("What's your name, adventurer?")
   end
 
 end

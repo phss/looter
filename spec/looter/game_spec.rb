@@ -35,7 +35,7 @@ describe Game do
 
       game.play(sample_adventure)
 
-      ui.should_not have_received(:display_message).with("What's your name, adventurer?")
+      ui.should have_received(:display_message).with("Bye!")
     end
 
   end
