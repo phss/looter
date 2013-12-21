@@ -22,20 +22,24 @@ describe Game do
 
   describe '(main menu)' do
 
-    it 'starts game when new game is choosen' do
-      ui.should_receive(:choose_option).and_return(:start)
-
-      game.play(sample_adventure)
-
-      ui.should have_received(:display_message).with("What's your name, adventurer?")
-    end
-
     it 'exits games when exit is choosen' do
       ui.should_receive(:choose_option).and_return(:exit)
 
       game.play(sample_adventure)
 
       ui.should have_received(:display_message).with("Bye!")
+    end
+
+    it 'starts game in first room when new game is choosen' do
+      pending
+      ui.should_receive(:choose_option).and_return(:start)
+
+      game.play(sample_adventure)
+
+      ui.should have_received(:display_screen).with({
+        :title => 'First room',
+        :description => 'This is the very first room of the test game!'
+      })
     end
 
   end
