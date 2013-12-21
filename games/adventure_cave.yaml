@@ -1,4 +1,6 @@
 title: Adventure Cave
 rooms:
   -
+    id: start
     name: Entrance
+    description: You see a cave.
