@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Game do  
+describe Game do
   let(:ui) { double('ui').as_null_object }
   let(:game) { Game.new(ui) }
   let(:sample_adventure) { Adventure.new('My great adventure') }
@@ -26,7 +26,7 @@ describe Game do
       ui.should_receive(:choose_option).and_return(:start)
 
       game.play(sample_adventure)
-      
+
       ui.should have_received(:display_message).with("What's your name, adventurer?")
     end
 
@@ -34,7 +34,7 @@ describe Game do
       ui.should_receive(:choose_option).and_return(:exit)
 
       game.play(sample_adventure)
-      
+
       ui.should_not have_received(:display_message).with("What's your name, adventurer?")
     end
 

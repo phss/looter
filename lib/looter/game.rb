@@ -15,5 +15,5 @@ class Game
       @ui.display_message("What's your name, adventurer?")
     end
   end
-  
+
 end
