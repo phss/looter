@@ -16,6 +16,10 @@ class Adventure
     @rooms.find { |room| room.id == room_id }
   end
 
+  def next_room
+    room(:start)
+  end
+
 end
 
 Room = Struct.new(:id, :name) do

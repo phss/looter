@@ -14,6 +14,15 @@ describe Adventure do
     adventure.room(:last).name.should == 'Last one'
   end
 
+  it 'has initial room as the :start room' do
+    adventure = Adventure.new('Testing rooms', [
+      Room.new(:start, 'This is first'),
+      Room.new(:last,  'Last one')
+    ])
+
+    adventure.next_room.name.should == 'This is first'
+  end
+
   it 'loads from configuration hash' do
     adventure = Adventure.from_hash({
       'title' => 'Title from hash',
