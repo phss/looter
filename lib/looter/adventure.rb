@@ -8,7 +8,8 @@ class Adventure
   end
 
   def self.from_hash(configuration_hash)
-    Adventure.new(configuration_hash['title'], [])
+    rooms = configuration_hash['rooms'].map { |room_hash| Room.new(room_hash['id'].to_sym, room_hash['name']) }
+    Adventure.new(configuration_hash['title'], rooms)
   end
 
   def room(room_id)
