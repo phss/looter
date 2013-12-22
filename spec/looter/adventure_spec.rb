@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Adventure do
 
-  it 'holds a many rooms' do
+  it 'holds many rooms' do
     adventure = Adventure.new('Testing rooms', [
       Room.new(:first,  'This is first'),
       Room.new(:second, 'Segundo'),

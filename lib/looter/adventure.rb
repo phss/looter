@@ -11,6 +11,10 @@ class Adventure
     Adventure.new(configuration_hash['title'], [])
   end
 
+  def room(room_id)
+    @rooms.find { |room| room.id == room_id }
+  end
+
 end
 
 Room = Struct.new(:id, :name) do
