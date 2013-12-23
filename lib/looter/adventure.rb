@@ -8,7 +8,9 @@ class Adventure
   end
 
   def self.from_hash(configuration_hash)
-    rooms = configuration_hash['rooms'].map { |room_hash| Room.new(room_hash['id'].to_sym, room_hash['name']) }
+    rooms = configuration_hash['rooms'].map do |room_hash| 
+      Room.new(room_hash['id'].to_sym, room_hash['name'])
+    end
     Adventure.new(configuration_hash['title'], rooms)
   end
 
@@ -20,7 +22,4 @@ class Adventure
     room(:start)
   end
 
-end
-
-Room = Struct.new(:id, :name) do
 end
