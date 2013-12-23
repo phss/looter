@@ -3,7 +3,10 @@ require 'spec_helper'
 describe Game do
   let(:ui) { double('ui').as_null_object }
   let(:game) { Game.new(ui) }
-  let(:sample_adventure) { Adventure.new('My great adventure', []) }
+  let(:sample_adventure) { Adventure.new('My great adventure', [
+    Room.new(:start, 'First room'),
+    Room.new(:last,  'Last one')
+  ])}
 
 
   describe '(intro)' do
@@ -31,7 +34,6 @@ describe Game do
     end
 
     it 'starts game in first room when new game is choosen' do
-      pending
       ui.should_receive(:choose_option).and_return(:start)
 
       game.play(sample_adventure)
