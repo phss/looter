@@ -6,5 +6,9 @@ class Room
     @id, @name = id, name
   end
 
+  def self.from_hash(configuration_hash)
+    Room.new(configuration_hash['id'].to_sym,
+             configuration_hash['name'])
+  end
 
 end
