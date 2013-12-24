@@ -24,17 +24,21 @@ class UI
  private
   
   def display_title(string)
-    display_message "# #{string} #"
+    display(string, "# %s #")
   end
   
   def display_subtitle(string)
-    display_message "- #{string} -"
+    display(string, "- %s -")
   end
 
   def display_options(options)
     options.each_with_index do |option, index|
       display_message "#{index+1}- #{option}"
     end
+  end
+
+  def display(string, template)
+    display_message template % string
   end
 
   def read
