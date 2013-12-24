@@ -1,4 +1,8 @@
 class UI
+  TEMPLATES = {
+    :title => "# %s #",
+    :subtitle => "- %s -"
+  }
 
   def initialize(input, output)
     @input = input
@@ -6,9 +10,13 @@ class UI
   end
 
   def display_screen(options)
-    display_title(options[:title]) if options[:title]
-    display_subtitle(options[:subtitle]) if options[:subtitle]
-    display_options(options[:options]) if options[:options]
+    options.each do |option, value|
+      if option == :options
+        display_options(value)
+      else
+        display(value, TEMPLATES[option])
+      end
+    end
   end
 
   def choose_option(options)
@@ -22,14 +30,6 @@ class UI
   end
 
  private
-  
-  def display_title(string)
-    display(string, "# %s #")
-  end
-  
-  def display_subtitle(string)
-    display(string, "- %s -")
-  end
 
   def display_options(options)
     options.each_with_index do |option, index|
