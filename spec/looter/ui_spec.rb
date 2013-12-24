@@ -13,13 +13,19 @@ describe UI do
 
   describe '(displaying a screen)' do
 
-    it 'displays screen' do
+    it 'displays all screen elements' do
       ui.display_screen(
         :title => 'My title',
         :subtitle => 'Your subtitle',
         :options => ['One', 'Two'])
 
       output.string.should == "# My title #\n- Your subtitle -\n1- One\n2- Two\n"
+    end
+
+    it 'displays only title' do
+      ui.display_screen(:title => 'Only title')
+
+      output.string.should == "# Only title #\n"
     end
 
   end
