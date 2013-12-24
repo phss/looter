@@ -16,7 +16,8 @@ class Game
       return
     end
 
-    @ui.display_message("What's your name, adventurer?")
+    room = adventure.next_room
+    @ui.display_screen(:title => room.name)
   end
 
 end
