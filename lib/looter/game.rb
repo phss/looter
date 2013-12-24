@@ -5,19 +5,26 @@ class Game
   end
 
   def play(adventure)
-    @ui.display_screen(
-      :title => 'Looter',
-      :subtitle => adventure.title,
-      :options => ['Start new game', 'Exit'])
+    option = main_menu_for(adventure)
 
-    option = @ui.choose_option([:start, :exit])
     if option == :exit
       @ui.display_message("Bye!")
       return
     end
 
-    room = adventure.next_room
-    @ui.display_screen(:title => room.name)
+    @ui.display_screen(
+      :title => adventure.next_room.name)
+  end
+
+ private
+
+  def main_menu_for(adventure)
+    @ui.display_screen(
+      :title => 'Looter',
+      :subtitle => adventure.title,
+      :options => ['Start new game', 'Exit'])
+
+    @ui.choose_option([:start, :exit])
   end
 
 end
