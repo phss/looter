@@ -12,11 +12,11 @@ class GameProcess
   end
 
   def read_title
-    read_lines_matching(TITLE_REGEXP).first
+    read_lines_matching(TITLE_REGEXP).last
   end
 
   def read_subtitle
-    read_lines_matching(SUBTITLE_REGEXP).first
+    read_lines_matching(SUBTITLE_REGEXP).last
   end
 
   def read_options
@@ -26,6 +26,7 @@ class GameProcess
   def choose_option(option)
     option_number = read_options.index(option) + 1
     write(option_number)
+    update_raw_output
   end
 
   def write(output)
@@ -33,7 +34,6 @@ class GameProcess
   end
 
   def read_last_message
-    update_raw_output
     output_lines.last
   end
 
