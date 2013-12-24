@@ -6,7 +6,7 @@ class UI
   end
 
   def display_screen(options)
-    display_title(options[:title])
+    display_title(options[:title]) if options[:title]
     display_subtitle(options[:subtitle]) if options[:subtitle]
     display_options(options[:options]) if options[:options]
   end

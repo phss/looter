@@ -28,6 +28,18 @@ describe UI do
       output.string.should == "# Only title #\n"
     end
 
+    it 'displays only subtitle' do
+      ui.display_screen(:subtitle => 'Only subtitle')
+
+      output.string.should == "- Only subtitle -\n"
+    end
+
+    it 'displays only options' do
+      ui.display_screen(:options => ['Only', 'Options'])
+
+      output.string.should == "1- Only\n2- Options\n"
+    end
+
   end
 
   describe '(choosing an option)' do
