@@ -1,19 +1,19 @@
 class SingleValueTemplate
 
-  def initialize(template)
-    @template = template
+  def initialize(pattern)
+    @pattern = pattern
   end
 
-  def apply(string)
-    @template % string
+  def apply(value)
+    @pattern % value
   end
 
 end
 
 class ListTemplate
 
-  def initialize(template)
-    @template = SingleValueTemplate.new(template)
+  def initialize(pattern)
+    @template = SingleValueTemplate.new(pattern)
   end
 
   def apply(values)
