@@ -15,9 +15,9 @@ describe 'Templates' do
   describe ListTemplate do
 
     it 'applies template to a list of values' do
-      template = ListTemplate.new("%s")
+      template = ListTemplate.new("<%s>")
 
-      template.apply(['First value', 'Second value']).should == "First value\nSecond value"
+      template.apply(['First value', 'Second value']).should == "<First value>\n<Second value>"
     end
 
   end
