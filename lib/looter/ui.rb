@@ -3,7 +3,8 @@ require_relative 'ui/templates'
 class UI
   TEMPLATES = {
     :title => SingleValueTemplate.new("# %s #"),
-    :subtitle => SingleValueTemplate.new("- %s -")
+    :subtitle => SingleValueTemplate.new("- %s -"),
+    :options => ListTemplate.new("- %s")
   }
 
   def initialize(input, output)
@@ -13,11 +14,7 @@ class UI
 
   def display_screen(options)
     options.each do |option, value|
-      if option == :options
-        display_options(value)
-      else
-        display_message TEMPLATES[option].apply(value)
-      end
+      display_message TEMPLATES[option].apply(value)
     end
   end
 
@@ -32,16 +29,6 @@ class UI
   end
 
  private
-
-  def display_options(options)
-    options.each_with_index do |option, index|
-      display_message "#{index+1}- #{option}"
-    end
-  end
-
-  def display(string, template)
-    display_message template % string
-  end
 
   def read
     @input.gets
