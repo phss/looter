@@ -1,7 +1,9 @@
+require_relative 'ui/templates'
+
 class UI
   TEMPLATES = {
-    :title => "# %s #",
-    :subtitle => "- %s -"
+    :title => SingleValueTemplate.new("# %s #"),
+    :subtitle => SingleValueTemplate.new("- %s -")
   }
 
   def initialize(input, output)
@@ -14,7 +16,7 @@ class UI
       if option == :options
         display_options(value)
       else
-        display(value, TEMPLATES[option])
+        display_message TEMPLATES[option].apply(value)
       end
     end
   end
