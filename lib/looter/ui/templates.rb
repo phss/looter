@@ -13,11 +13,13 @@ end
 class ListTemplate
 
   def initialize(pattern)
-    @template = SingleValueTemplate.new(pattern)
+    @template = SingleValueTemplate.new("%s" + pattern)
   end
 
   def apply(values)
-    values.map { |value| @template.apply(value) }.join("\n")
+    values.each_with_index.map do |value, index| 
+      @template.apply([index + 1, value])
+    end.join("\n")
   end
 
 end

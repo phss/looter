@@ -14,10 +14,10 @@ describe 'Templates' do
 
   describe ListTemplate do
 
-    it 'applies template to a list of values' do
-      template = ListTemplate.new("<%s>")
+    it 'generates a numbered list, applying the template to the values' do
+      template = ListTemplate.new(") <%s>")
 
-      template.apply(['First value', 'Second value']).should == "<First value>\n<Second value>"
+      template.apply(['One', 'Two', 'Three']).should == "1) <One>\n2) <Two>\n3) <Three>"
     end
 
   end
