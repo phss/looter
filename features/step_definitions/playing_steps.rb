@@ -41,6 +41,10 @@ Then(/^I should be in room "(.*?)"$/) do |expected_room_name|
   actual_room_name.should == expected_room_name
 end
 
+Then(/^I should read description "(.*?)"$/) do |expected_description|
+  pending
+end
+
 def as_list(table)
   table.raw.map(&:first)
 end

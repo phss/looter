@@ -15,3 +15,4 @@ Feature: Playing
     Given I start the game "adventure_cave.yaml"
      When I choose "Start new game"
      Then I should be in room "Entrance"
+      And I should read description "You see a cave"
