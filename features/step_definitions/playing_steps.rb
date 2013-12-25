@@ -35,14 +35,10 @@ When(/^I answer "(.*?)"$/) do |answer|
   @game_process.write(answer)
 end
 
-Then(/^I should be in room "(.*?)"$/) do |expected_room_name|
+Then(/^I should be in room "(.*?)" with description "(.*?)"$/) do |expected_room_name, expected_description|
   actual_room_name = @game_process.read_title
 
   actual_room_name.should == expected_room_name
-end
-
-Then(/^I should read description "(.*?)"$/) do |expected_description|
-  pending
 end
 
 def as_list(table)
