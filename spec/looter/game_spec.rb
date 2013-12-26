@@ -39,7 +39,8 @@ describe Game do
       game.play(sample_adventure)
 
       ui.should have_received(:display_screen).with({
-        :title => 'First room'
+        :title => 'First room',
+        :description => 'First description'
       })
     end
 

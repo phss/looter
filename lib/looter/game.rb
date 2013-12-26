@@ -13,7 +13,8 @@ class Game
     end
 
     @ui.display_screen(
-      :title => adventure.next_room.name)
+      :title => adventure.next_room.name,
+      :description => adventure.next_room.description)
   end
 
  private
