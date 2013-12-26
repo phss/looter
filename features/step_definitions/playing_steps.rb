@@ -37,8 +37,10 @@ end
 
 Then(/^I should be in room "(.*?)" with description "(.*?)"$/) do |expected_room_name, expected_description|
   actual_room_name = @game_process.read_title
+  actual_description = @game_process.read_description
 
   actual_room_name.should == expected_room_name
+  actual_description.should == expected_description
 end
 
 def as_list(table)

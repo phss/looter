@@ -18,6 +18,10 @@ class GameProcess
   def read_subtitle
     read_lines_matching(SUBTITLE_REGEXP).last
   end
+  
+  def read_description
+     read_last_message
+  end
 
   def read_options
     read_lines_matching(OPTION_REGEXP)
