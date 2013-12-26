@@ -8,7 +8,7 @@ class Game
     option = main_menu_for(adventure)
 
     if option == :exit
-      @ui.display_message("Bye!")
+      @ui.display_screen(:description => "Bye!")
       return
     end
 

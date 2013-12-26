@@ -15,7 +15,7 @@ class UI
 
   def display_screen(options)
     options.each do |option, value|
-      display_message TEMPLATES[option].apply(value)
+      write TEMPLATES[option].apply(value)
     end
   end
 
@@ -25,11 +25,12 @@ class UI
     return options[selected_option_index]
   end
 
-  def display_message(string)
-    @output.puts string
-  end
 
  private
+
+  def write(string)
+    @output.puts string
+  end
 
   def read
     @input.gets

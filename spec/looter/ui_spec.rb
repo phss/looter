@@ -5,12 +5,6 @@ describe UI do
   let(:output) { StringIO.new }
   let(:ui) { UI.new(input, output) }
 
-  it 'displays a message' do
-    ui.display_message('Some message')
-
-    output.string.should == "Some message\n"
-  end
-
   describe '(displaying a screen)' do
 
     it 'displays all screen elements' do

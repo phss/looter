@@ -30,7 +30,7 @@ describe Game do
 
       game.play(sample_adventure)
 
-      ui.should have_received(:display_message).with("Bye!")
+      ui.should have_received(:display_screen).with(:description => "Bye!")
     end
 
     it 'starts game in first room when new game is choosen' do
