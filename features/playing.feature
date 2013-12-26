@@ -15,3 +15,6 @@ Feature: Playing
     Given I start the game "adventure_cave.yaml"
      When I choose "Start new game"
      Then I should be in room "Entrance" with description "You see a cave."
+      And I should see the options
+        | Enter |
+        | Leave |
