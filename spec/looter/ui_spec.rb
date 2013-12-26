@@ -17,9 +17,10 @@ describe UI do
       ui.display_screen(
         :title => 'My title',
         :subtitle => 'Your subtitle',
+        :description => 'Something here',
         :options => ['One', 'Two'])
 
-      output.string.should == "# My title #\n- Your subtitle -\n1- One\n2- Two\n"
+      output.string.should == "# My title #\n- Your subtitle -\nSomething here\n1- One\n2- Two\n"
     end
 
     it 'displays only title' do
@@ -39,6 +40,13 @@ describe UI do
 
       output.string.should == "1- Only\n2- Options\n"
     end
+
+    it 'displays only description' do
+      ui.display_screen(:description => 'Only description')
+
+      output.string.should == "Only description\n"
+    end
+
 
   end
 

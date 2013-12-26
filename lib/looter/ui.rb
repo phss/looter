@@ -4,6 +4,7 @@ class UI
   TEMPLATES = {
     :title => SingleValueTemplate.new("# %s #"),
     :subtitle => SingleValueTemplate.new("- %s -"),
+    :description => SingleValueTemplate.new("%s"),
     :options => ListTemplate.new("- %s")
   }
 
