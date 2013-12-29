@@ -44,7 +44,6 @@ describe Game do
         :description => 'First description',
         :options => ['One thing', 'Another']
       })
-      ui.should have_received(:choose_option).with([:one, :another])
     end
 
   end
