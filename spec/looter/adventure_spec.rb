@@ -4,9 +4,9 @@ describe Adventure do
 
   it 'holds many rooms' do
     adventure = Adventure.new('Testing rooms', [
-      Room.new(:first,  'This is first', nil),
-      Room.new(:second, 'Segundo', nil),
-      Room.new(:last,   'Last one', nil)
+      Room.new(:first,  'This is first', nil, nil),
+      Room.new(:second, 'Segundo', nil, nil),
+      Room.new(:last,   'Last one', nil, nil)
     ])
 
     adventure.room(:first).name.should == 'This is first'
@@ -16,8 +16,8 @@ describe Adventure do
 
   it 'has initial room as the :start room' do
     adventure = Adventure.new('Testing rooms', [
-      Room.new(:start, 'This is first', nil),
-      Room.new(:last,  'Last one', nil)
+      Room.new(:start, 'This is first', nil, nil),
+      Room.new(:last,  'Last one', nil, nil)
     ])
 
     adventure.next_room.name.should == 'This is first'
@@ -27,8 +27,8 @@ describe Adventure do
     adventure = Adventure.from_hash({
       'title' => 'Title from hash',
       'rooms' => [
-        { 'id' => 'start',   'name' => 'First room' },
-        { 'id' => 'another', 'name' => 'Another room' }
+        { 'id' => 'start',   'name' => 'First room', 'directions' => [] },
+        { 'id' => 'another', 'name' => 'Another room', 'directions' => [] }
       ]
     })
 

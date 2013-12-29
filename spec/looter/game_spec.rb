@@ -4,8 +4,8 @@ describe Game do
   let(:ui) { double('ui').as_null_object }
   let(:game) { Game.new(ui) }
   let(:sample_adventure) { Adventure.new('My great adventure', [
-    Room.new(:start, 'First room', 'First description'),
-    Room.new(:last,  'Last one', 'Last description')
+    Room.new(:start, 'First room', 'First description', []),
+    Room.new(:last,  'Last one', 'Last description', [])
   ])}
 
 
