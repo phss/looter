@@ -3,6 +3,7 @@ require 'pty'
 class GameProcess
   TITLE_REGEXP = /^# (.*) #/
   SUBTITLE_REGEXP = /^- (.*) -/
+  DESCRIPTION_REGEXP = /^(.*)/
   OPTION_REGEXP = /^\d- (.*)/
 
   def initialize(game_command)
@@ -20,7 +21,7 @@ class GameProcess
   end
   
   def read_description
-     read_last_message
+    read_lines_matching(DESCRIPTION_REGEXP)[1] # For now, it's the second line
   end
 
   def read_options
