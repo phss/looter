@@ -34,14 +34,17 @@ describe Game do
     end
 
     it 'starts game in first room when new game is choosen' do
+      pending
       ui.should_receive(:choose_option).and_return(:start)
 
       game.play(sample_adventure)
 
       ui.should have_received(:display_screen).with({
         :title => 'First room',
-        :description => 'First description'
+        :description => 'First description',
+        :options => ['One thing', 'Another']
       })
+      ui.should have_received(:choose_option).with([:one, :another])
     end
 
   end
