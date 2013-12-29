@@ -4,7 +4,7 @@ describe Game do
   let(:ui) { double('ui').as_null_object }
   let(:game) { Game.new(ui) }
   let(:sample_adventure) { Adventure.new('My great adventure', [
-    Room.new(:start, 'First room', 'First description', []),
+    Room.new(:start, 'First room', 'First description', ['One thing', 'Another']),
     Room.new(:last,  'Last one', 'Last description', [])
   ])}
 
@@ -34,7 +34,6 @@ describe Game do
     end
 
     it 'starts game in first room when new game is choosen' do
-      pending
       ui.should_receive(:choose_option).and_return(:start)
 
       game.play(sample_adventure)
