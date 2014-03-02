@@ -56,3 +56,7 @@ rooms:
     description: Lots of treasure.
     directions:
       - { name: North, room_id: room6 }
+  -
+    id: end
+    name: Exit
+    description: You escape intact!
