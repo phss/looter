@@ -60,3 +60,5 @@ rooms:
     id: end
     name: Exit
     description: You escape intact!
+    directions:
+      - { name: NA, room_id: NA }
