@@ -18,3 +18,10 @@ Feature: Playing
       And I should see the options
         | Enter |
         | Leave |
+
+  Scenario: moving between rooms
+    Given I start the game "adventure_cave.yaml"
+     When I choose "Start new game"
+      And I choose "Enter"
+      And I choose "Continue south"
+     Then I should be in room "Study" with description "Small study."
