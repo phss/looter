@@ -1,8 +1,24 @@
-class IntroScreen
+class Screen
 
   def initialize(adventure)
     @adventure = adventure
   end
+
+  def layout
+    { } 
+  end
+
+  def options
+    nil
+  end
+
+  def next_screen(options)
+    nil
+  end
+
+end
+
+class IntroScreen < Screen
 
   def layout
     {
@@ -22,29 +38,15 @@ class IntroScreen
 
 end
 
-class ExitScreen
-
-  def initialize(adventure)
-  end
+class ExitScreen < Screen
 
   def layout
     { :description => "Bye!" } 
   end
 
-  def options
-    nil
-  end
-
-  def next_screen(options)
-    nil
-  end
 end
 
-class RoomScreen
-  
-  def initialize(adventure)
-    @adventure = adventure
-  end
+class RoomScreen < Screen
 
   def layout
     room = @adventure.next_room
@@ -53,10 +55,6 @@ class RoomScreen
       :description => room.description,
       :options => room.exit_names
     }
-  end
-
-  def options
-    nil
   end
 
   def next_screen(option)
