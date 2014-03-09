@@ -14,7 +14,9 @@ class RoomLoader
     Room.new(configuration_hash['id'].to_sym,
              configuration_hash['name'],
              configuration_hash['description'],
-             configuration_hash['directions'].map { |direction| direction['name'] })
+             configuration_hash['directions'].map do |direction|
+                Exit.new(direction['room_id'], direction['name'])
+             end)
   end
 
 end

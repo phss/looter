@@ -21,7 +21,6 @@ end
 describe RoomLoader do
 
   it 'loads from configuration hash' do
-    pending
     room = RoomLoader.load_from_hash({ 'id' => 'eyedee', 
                             'name' => 'Roomy',
                             'description' => 'Exciting scenary',

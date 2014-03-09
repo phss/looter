@@ -15,7 +15,7 @@ class Game
     @ui.display_screen(
       :title => adventure.next_room.name,
       :description => adventure.next_room.description,
-      :options => adventure.next_room.exits)
+      :options => adventure.next_room.exit_names)
   end
 
  private

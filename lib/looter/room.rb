@@ -1,6 +1,6 @@
 class Room
 
-  attr_reader :id, :name, :description, :exits
+  attr_reader :id, :name, :description
 
   def initialize(id, name, description, exits)
     @id, @name, @description, @exits = id, name, description, exits
