@@ -3,17 +3,21 @@ class Game
   def initialize(ui)
     @ui = ui
     @screens = {
-      :intro => IntroScreen.new(ui),
-      :room => RoomScreen.new(ui)
+      :intro => IntroScreen,
+      :room => RoomScreen,
+      :exit => ExitScreen
     }
     @current_screen = :intro
   end
 
   def play(adventure)
     while @current_screen
-      screen = @screens[@current_screen]
-      screen.show(adventure)
-      @current_screen = screen.next_screen
+      screen = @screens[@current_screen].new(adventure)
+      @ui.display_screen(screen.layout)
+      if screen.options
+        selected_option = @ui.choose_option(screen.options)
+      end
+      @current_screen = screen.next_screen(selected_option)
     end
   end
 
@@ -21,45 +25,67 @@ end
 
 class IntroScreen
 
-  def initialize(ui)
-    @ui = ui
+  def initialize(adventure)
+    @adventure = adventure
   end
 
-  def show(adventure)
-    @ui.display_screen(
+  def layout
+    {
       :title => 'Looter',
-      :subtitle => adventure.title,
-      :options => ['Start new game', 'Exit'])
+      :subtitle => @adventure.title,
+      :options => ['Start new game', 'Exit']
+    }
   end
 
-  def next_screen
-    option = @ui.choose_option([:start, :exit])
+  def options
+    [:start, :exit]
+  end
 
-    if option == :exit
-      @ui.display_screen(:description => "Bye!")
-      return nil
-    end
-
-    return :room
+  def next_screen(option)
+    option == :exit ? :exit : :room
   end
 
 end
 
+class ExitScreen
+
+  def initialize(adventure)
+  end
+
+  def layout
+    { :description => "Bye!" } 
+  end
+
+  def options
+    nil
+  end
+
+  def next_screen(options)
+    nil
+  end
+end
+
 class RoomScreen
   
-  def initialize(ui)
-    @ui = ui
+  def initialize(adventure)
+    @adventure = adventure
   end
 
-  def show(adventure)
-    @ui.display_screen(
-      :title => adventure.next_room.name,
-      :description => adventure.next_room.description,
-      :options => adventure.next_room.exit_names)
+  def layout
+    room = @adventure.next_room
+    {
+      :title => room.name,
+      :description => room.description,
+      :options => room.exit_names
+    }
   end
 
-  def next_screen
+  def options
     nil
+  end
+
+  def next_screen(option)
+    :exit
   end
 
 end
