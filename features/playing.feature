@@ -19,6 +19,7 @@ Feature: Playing
         | Enter |
         | Leave |
 
+  @wip
   Scenario: moving between rooms
     Given I start the game "adventure_cave.yaml"
      When I choose "Start new game"
