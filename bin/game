@@ -6,7 +6,7 @@ require 'YAML'
 adventure_file_path = ARGV.first
 adventure_raw = YAML.load_file(adventure_file_path)
 
-adventure = Adventure.from_hash(adventure_raw)
+adventure = AdventureLoader.load_from_hash(adventure_raw)
 
 ui = UI.new($stdin, $stdout)
 

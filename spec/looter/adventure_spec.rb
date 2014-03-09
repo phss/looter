@@ -23,17 +23,4 @@ describe Adventure do
     adventure.next_room.name.should == 'This is first'
   end
 
-  it 'loads from configuration hash' do
-    adventure = Adventure.from_hash({
-      'title' => 'Title from hash',
-      'rooms' => [
-        { 'id' => 'start',   'name' => 'First room', 'directions' => [] },
-        { 'id' => 'another', 'name' => 'Another room', 'directions' => [] }
-      ]
-    })
-
-    adventure.title.should == 'Title from hash'
-    adventure.room(:start).name.should == 'First room'
-    adventure.room(:another).name.should == 'Another room'
-  end
 end
