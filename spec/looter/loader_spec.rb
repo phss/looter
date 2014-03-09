@@ -21,6 +21,7 @@ end
 describe RoomLoader do
 
   it 'loads from configuration hash' do
+    pending
     room = RoomLoader.load_from_hash({ 'id' => 'eyedee', 
                             'name' => 'Roomy',
                             'description' => 'Exciting scenary',
@@ -32,7 +33,8 @@ describe RoomLoader do
     room.id.should == :eyedee
     room.name.should == 'Roomy'
     room.description.should == 'Exciting scenary'
-    room.exits.should == ['One way', 'Another']
+    room.exit_names.should == ['One way', 'Another']
+    room.exit_rooms.should == ['oneway',  'another']
   end
 
 end
