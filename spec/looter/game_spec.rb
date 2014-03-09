@@ -2,50 +2,56 @@ require 'spec_helper'
 
 describe Game do
   let(:ui) { double('ui').as_null_object }
-  let(:game) { Game.new(ui) }
-  let(:sample_adventure) { Adventure.new('My great adventure', [
-    Room.new(:start, 'First room', 'First description', [
-             Exit.new(:r1, 'One thing'),
-             Exit.new(:r2, 'Another')]),
-    Room.new(:last,  'Last one', 'Last description', [])
-  ])}
+  let(:screens) { { :first => FirstScreen, :last => LastScreen } }
+    
+  it 'interacts with single screen in final screen' do
+    game = Game.new(ui, screens, :last)
 
+    game.play(double('adventure'))
 
-  describe '(intro)' do
-
-    it 'displays titles and main menu' do
-      game.play(sample_adventure)
-
-      ui.should have_received(:display_screen).with({
-        :title => 'Looter',
-        :subtitle => 'My great adventure',
-        :options => ['Start new game', 'Exit']
-      })
-    end
-
+    ui.should have_received(:display_screen).with(:title => "Last", 
+                                                  :description => "Last screen")
+    ui.should have_received(:choose_option).with([:something, :another])
   end
 
-  describe '(main menu)' do
+  it 'navigates to next screen when still playing' do
+    game = Game.new(ui, screens, :first)
+    ui.should_receive(:choose_option).and_return(:last)
 
-    it 'exits games when exit is choosen' do
-      ui.should_receive(:choose_option).and_return(:exit)
+    game.play(double('adventure'))
 
-      game.play(sample_adventure)
+    ui.should have_received(:display_screen).with(:title => "First", 
+                                                  :description => "First screen")
+    ui.should have_received(:display_screen).with(:title => "Last", 
+                                                  :description => "Last screen")
+  end
 
-      ui.should have_received(:display_screen).with(:description => "Bye!")
-    end
+end
 
-    it 'starts game in first room when new game is choosen' do
-      ui.should_receive(:choose_option).and_return(:start)
+class FirstScreen < Screen
+  def layout
+    { :title => "First", :description => "First screen" }
+  end
 
-      game.play(sample_adventure)
+  def options
+    [:last, :never]
+  end
 
-      ui.should have_received(:display_screen).with({
-        :title => 'First room',
-        :description => 'First description',
-        :options => ['One thing', 'Another']
-      })
-    end
+  def next_screen(option)
+    option
+  end
+end
 
+class LastScreen < Screen
+  def layout
+    { :title => "Last", :description => "Last screen" }
+  end
+
+  def options
+    [:something, :another]
+  end
+
+  def next_screen(option)
+    nil
   end
 end

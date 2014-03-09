@@ -1,13 +1,9 @@
 class Game
 
-  def initialize(ui)
+  def initialize(ui, screens, start_screen)
     @ui = ui
-    @screens = {
-      :intro => IntroScreen,
-      :room => RoomScreen,
-      :exit => ExitScreen
-    }
-    @current_screen = :intro
+    @screens = screens
+    @current_screen = start_screen
   end
 
   def play(adventure)
