@@ -11,14 +11,32 @@ class Game
   end
 
   def play(adventure)
-    while @current_screen
-      screen = @screens[@current_screen].new(adventure)
-      @ui.display_screen(screen.layout)
-      if screen.options
-        selected_option = @ui.choose_option(screen.options)
-      end
-      @current_screen = screen.next_screen(selected_option)
+    while still_playing
+      screen = load_current_screen(adventure)
+      show(screen)
+      act(screen)
     end
+  end
+
+ private
+
+  def still_playing
+    @current_screen
+  end
+
+  def load_current_screen(adventure)
+    @screens[@current_screen].new(adventure)
+  end
+
+  def show(screen)
+    @ui.display_screen(screen.layout)
+  end
+
+  def act(screen)
+    if screen.options
+      selected_option = @ui.choose_option(screen.options)
+    end
+    @current_screen = screen.next_screen(selected_option)
   end
 
 end
