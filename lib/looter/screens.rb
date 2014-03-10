@@ -62,6 +62,7 @@ class RoomScreen < Screen
   end
 
   def next_screen(option)
+    @adventure.travel_to(option)
     :room
   end
 

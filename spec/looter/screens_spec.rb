@@ -49,7 +49,7 @@ describe 'Screens' do
     end
     
     it 'has room as next screen' do
-      screen.next_screen(:anything).should == :room
+      screen.next_screen(:one).should == :room
     end
 
   end

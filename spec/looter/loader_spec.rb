@@ -33,7 +33,7 @@ describe RoomLoader do
     room.name.should == 'Roomy'
     room.description.should == 'Exciting scenary'
     room.exit_names.should == ['One way', 'Another']
-    room.exit_rooms.should == ['oneway',  'another']
+    room.exit_rooms.should == [:oneway,  :another]
   end
 
 end

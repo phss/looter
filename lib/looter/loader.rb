@@ -12,7 +12,7 @@ class RoomLoader
   
   def self.load_from_hash(configuration_hash)
     room_exits = configuration_hash['directions'].map do |direction|
-       Exit.new(direction['room_id'], direction['name'])
+       Exit.new(direction['room_id'].to_sym, direction['name'])
     end
     Room.new(configuration_hash['id'].to_sym,
              configuration_hash['name'],
