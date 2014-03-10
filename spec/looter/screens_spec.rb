@@ -48,8 +48,8 @@ describe 'Screens' do
       screen.options.should == [:one, :another]
     end
     
-    it 'has no next screen yet' do
-      screen.next_screen(:anything).should == :exit
+    it 'has room as next screen' do
+      screen.next_screen(:anything).should == :room
     end
 
   end

@@ -62,7 +62,7 @@ class RoomScreen < Screen
   end
 
   def next_screen(option)
-    :exit
+    :room
   end
 
 end
