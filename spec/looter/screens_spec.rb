@@ -3,8 +3,8 @@ require "spec_helper"
 describe 'Screens' do
   let(:sample_adventure) { Adventure.new('My great adventure', [
     Room.new(:start, 'First room', 'First description', [
-             Exit.new(:r1, 'One thing'),
-             Exit.new(:r2, 'Another')]),
+             Exit.new(:one, 'One thing'),
+             Exit.new(:another, 'Another')]),
     Room.new(:last,  'Last one', 'Last description', [])
   ])}
 
@@ -43,9 +43,12 @@ describe 'Screens' do
         :options => ['One thing', 'Another']
       }
     end
+
+    it 'has exit rooms as screen options' do
+      screen.options.should == [:one, :another]
+    end
     
-    it 'has no options or next screen yet' do
-      screen.options.should be_nil
+    it 'has no next screen yet' do
       screen.next_screen(:anything).should == :exit
     end
 

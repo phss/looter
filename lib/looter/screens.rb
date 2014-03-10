@@ -57,6 +57,10 @@ class RoomScreen < Screen
     }
   end
 
+  def options
+    @adventure.next_room.exit_rooms
+  end
+
   def next_screen(option)
     :exit
   end
