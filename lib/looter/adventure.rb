@@ -13,7 +13,7 @@ class Adventure
   end
 
   def travel_to(room_id)
-    raise LooterInvalidRoute unless current_room.exit_rooms.include?(room_id)
+    raise LooterInvalidRoute unless current_room.has_exit?(room_id)
     @current_room = room(room_id)
   end
 

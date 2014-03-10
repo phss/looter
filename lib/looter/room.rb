@@ -14,6 +14,10 @@ class Room
     @exits.map(&:room_id)
   end
 
+  def has_exit?(room_id)
+    exit_rooms.include?(room_id)
+  end
+
 end
 
 Exit = Struct.new(:room_id, :name)
