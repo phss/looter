@@ -23,4 +23,27 @@ describe Adventure do
     adventure.current_room.name.should == 'This is first'
   end
 
+  describe "(traveling)" do
+    let(:adventure) do
+      Adventure.new('Testing rooms', [
+        Room.new(:start, 'First', nil, [ Exit.new(:left, "Left"), Exit.new(:right, "Right") ]),
+        Room.new(:left, 'Left', nil, [ Exit.new(:another, "Another") ]),
+        Room.new(:right, 'Right', nil, [ Exit.new(:no_way, "No way") ]),
+        Room.new(:another, 'Final destination', nil, [])
+      ])
+    end
+
+    it 'travels through rooms using room ids' do
+      adventure.travel_to(:left)
+      adventure.travel_to(:another)
+
+      adventure.current_room.name.should == 'Final destination'
+    end
+
+    it 'cannot travel to room not accessible through current room' do
+      expect { adventure.travel_to(:another) }.should raise_error(LooterInvalidRoute)
+    end
+
+  end
+
 end

@@ -12,4 +12,11 @@ class Adventure
     @rooms.find { |room| room.id == room_id }
   end
 
+  def travel_to(room_id)
+    raise LooterInvalidRoute unless current_room.exit_rooms.include?(room_id)
+    @current_room = room(room_id)
+  end
+
 end
+
+class LooterInvalidRoute < StandardError; end
