@@ -19,10 +19,9 @@ Feature: Playing
         | Enter |
         | Leave |
 
-  @wip
   Scenario: moving between rooms
     Given I start the game "adventure_cave.yaml"
      When I choose "Start new game"
       And I choose "Enter"
       And I choose "Continue south"
-     Then I should be in room "Study" with description "Small study."
+     Then I should be in room "Big room" with description "Airy room. Lots of space."
