@@ -49,7 +49,7 @@ end
 class RoomScreen < Screen
 
   def layout
-    room = @adventure.next_room
+    room = @adventure.current_room
     {
       :title => room.name,
       :description => room.description,
@@ -58,7 +58,7 @@ class RoomScreen < Screen
   end
 
   def options
-    @adventure.next_room.exit_rooms
+    @adventure.current_room.exit_rooms
   end
 
   def next_screen(option)

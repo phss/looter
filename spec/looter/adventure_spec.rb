@@ -20,7 +20,7 @@ describe Adventure do
       Room.new(:last,  'Last one', nil, nil)
     ])
 
-    adventure.next_room.name.should == 'This is first'
+    adventure.current_room.name.should == 'This is first'
   end
 
 end
