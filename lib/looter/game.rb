@@ -8,7 +8,7 @@ class Game
   end
 
   def play(adventure)
-    @saver.save(adventure)
+    save(adventure)
     while still_playing
       screen = load_current_screen(adventure)
       show(screen)
@@ -35,6 +35,10 @@ class Game
       selected_option = @ui.choose_option(screen.options)
     end
     @current_screen = screen.next_screen(selected_option)
+  end
+
+  def save(adventure)
+    @saver.save(adventure)
   end
 
 end

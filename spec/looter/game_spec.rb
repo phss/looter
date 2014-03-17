@@ -9,7 +9,7 @@ describe Game do
   it 'interacts with single screen in final screen' do
     game = Game.new(ui, saver, screens, :last)
 
-    game.play(double('adventure'))
+    game.play(adventure)
 
     ui.should have_received(:display_screen).with(:title => "Last", 
                                                   :description => "Last screen")
@@ -20,7 +20,7 @@ describe Game do
     game = Game.new(ui, saver, screens, :first)
     ui.should_receive(:choose_option).and_return(:last)
 
-    game.play(double('adventure'))
+    game.play(adventure)
 
     ui.should have_received(:display_screen).with(:title => "First", 
                                                   :description => "First screen")
