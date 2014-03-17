@@ -11,7 +11,7 @@ adventure = AdventureLoader.load_from_hash(adventure_raw)
 ui = UI.new($stdin, $stdout)
 
 game = Game.new(ui, 
-  AdventureSaver.new, 
+  AdventureSaver.new('saves/save_adventure_cave.yaml'), #TODO make it parametrisable 
   {
     :intro => IntroScreen,
     :room => RoomScreen,
