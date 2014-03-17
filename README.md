@@ -8,7 +8,7 @@ The intent is to build a text based game that generates an adventure every time 
 To play
 -------
 
-    ./bin/game games/adventure_cave.yaml
+    ./bin/game adventure_cave
     
     
 Tests

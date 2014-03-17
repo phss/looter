@@ -1,5 +1,5 @@
-When(/^I start the game "(.*?)"$/) do |game_file|
-  @game_process = GameProcess.new("./bin/game games/#{game_file}")
+When(/^I start the game "(.*?)"$/) do |game_name|
+  @game_process = GameProcess.new("./bin/game #{game_name}")
 end
 
 Then(/^I should see game title "(.*?)"$/) do |expected_title|

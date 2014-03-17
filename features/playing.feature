@@ -4,7 +4,7 @@ Feature: Playing
   I want to start a new adventure
 
   Scenario: viewing intro and main menu
-    When I start the game "adventure_cave.yaml"
+    When I start the game "adventure_cave"
     Then I should see game title "Looter"
      And I should see aventure title "Adventure Cave"
      And I should see the options
@@ -12,7 +12,7 @@ Feature: Playing
       | Exit           |
 
   Scenario: starting a new game
-    Given I start the game "adventure_cave.yaml"
+    Given I start the game "adventure_cave"
      When I choose "Start new game"
      Then I should be in room "Entrance" with description "You see a cave."
       And I should see the options
@@ -20,7 +20,7 @@ Feature: Playing
         | Leave |
 
   Scenario: moving between rooms
-    Given I start the game "adventure_cave.yaml"
+    Given I start the game "adventure_cave"
      When I choose "Start new game"
       And I choose "Enter"
       And I choose "Continue south"

@@ -3,7 +3,8 @@
 require_relative '../lib/looter'
 require 'YAML'
 
-adventure_file_path = ARGV.first
+adventure_name = ARGV.first
+adventure_file_path = "games/#{adventure_name}.yaml"
 adventure_raw = YAML.load_file(adventure_file_path)
 
 adventure = AdventureLoader.load_from_hash(adventure_raw)
@@ -11,7 +12,7 @@ adventure = AdventureLoader.load_from_hash(adventure_raw)
 ui = UI.new($stdin, $stdout)
 
 game = Game.new(ui, 
-  AdventureSaver.new('saves/save_adventure_cave.yaml'), #TODO make it parametrisable 
+  AdventureSaver.new("saves/#{adventure_name}.yaml"),
   {
     :intro => IntroScreen,
     :room => RoomScreen,
