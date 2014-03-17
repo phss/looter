@@ -1,12 +1,14 @@
 class Game
 
-  def initialize(ui, screens, start_screen)
+  def initialize(ui, saver, screens, start_screen)
     @ui = ui
+    @saver = saver
     @screens = screens
     @current_screen = start_screen
   end
 
   def play(adventure)
+    @saver.save(adventure)
     while still_playing
       screen = load_current_screen(adventure)
       show(screen)

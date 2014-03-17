@@ -10,7 +10,9 @@ adventure = AdventureLoader.load_from_hash(adventure_raw)
 
 ui = UI.new($stdin, $stdout)
 
-game = Game.new(ui, {
+game = Game.new(ui, 
+  AdventureSaver.new, 
+  {
     :intro => IntroScreen,
     :room => RoomScreen,
     :exit => ExitScreen

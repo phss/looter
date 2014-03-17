@@ -3,9 +3,11 @@ require 'spec_helper'
 describe Game do
   let(:ui) { double('ui').as_null_object }
   let(:screens) { { :first => FirstScreen, :last => LastScreen } }
+  let(:adventure) { double('adventure') }
+  let(:saver) { double('saver').as_null_object }
     
   it 'interacts with single screen in final screen' do
-    game = Game.new(ui, screens, :last)
+    game = Game.new(ui, saver, screens, :last)
 
     game.play(double('adventure'))
 
@@ -15,7 +17,7 @@ describe Game do
   end
 
   it 'navigates to next screen when still playing' do
-    game = Game.new(ui, screens, :first)
+    game = Game.new(ui, saver, screens, :first)
     ui.should_receive(:choose_option).and_return(:last)
 
     game.play(double('adventure'))
@@ -24,6 +26,14 @@ describe Game do
                                                   :description => "First screen")
     ui.should have_received(:display_screen).with(:title => "Last", 
                                                   :description => "Last screen")
+  end
+
+  it 'saves adventure at start of game' do
+    game = Game.new(ui, saver, screens, :last)
+
+    game.play(adventure)
+
+    saver.should have_received(:save).with(adventure)
   end
 
 end
