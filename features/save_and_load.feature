@@ -7,3 +7,10 @@ Feature: Saving and loading
     Given I start the game "adventure_cave.yaml"
      When I choose "Start new game"
      Then save file "save_adventure_cave.yaml" should have 'start' as current room
+
+  Scenario: have last last location as current room
+    Given I start the game "adventure_cave.yaml"
+     When I choose "Start new game"
+      And I choose "Enter"
+      And I choose "Continue south"
+     Then save file "save_adventure_cave.yaml" should have 'room2' as current room

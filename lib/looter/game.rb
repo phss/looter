@@ -8,11 +8,11 @@ class Game
   end
 
   def play(adventure)
-    save(adventure)
     while still_playing
       screen = load_current_screen(adventure)
       show(screen)
       act(screen)
+      save(adventure)
     end
   end
 

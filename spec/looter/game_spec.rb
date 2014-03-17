@@ -28,7 +28,7 @@ describe Game do
                                                   :description => "Last screen")
   end
 
-  it 'saves adventure at start of game' do
+  it 'saves adventure while playing the game' do
     game = Game.new(ui, saver, screens, :last)
 
     game.play(adventure)
