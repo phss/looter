@@ -24,7 +24,7 @@ class IntroScreen < Screen
     {
       :title => 'Looter',
       :subtitle => @adventure.title,
-      :options => ['Start new game', 'Exit']
+      :options => ['Start new game', 'Continue', 'Exit']
     }
   end
 

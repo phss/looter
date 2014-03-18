@@ -15,7 +15,7 @@ describe 'Screens' do
       screen.layout.should == {
         :title => 'Looter',
         :subtitle => 'My great adventure',
-        :options => ['Start new game', 'Exit']
+        :options => ['Start new game', 'Continue', 'Exit']
       } 
     end
 

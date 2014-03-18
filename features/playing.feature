@@ -9,6 +9,7 @@ Feature: Playing
      And I should see aventure title "Adventure Cave"
      And I should see the options
       | Start new game |
+      | Continue       |
       | Exit           |
 
   Scenario: starting a new game
