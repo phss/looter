@@ -17,7 +17,7 @@ Feature: Saving and loading
 
   @wip
   Scenario: continue game from last saved location
-    Given I have a save file "adventure_cave.yaml" with 'room3' as current room
+    Given I have a save file "adventure_cave.yaml" with "room3" as current room
       And I start the game "adventure_cave"
      When I choose "Continue"
      Then I should be in room "Study" with description "Small study."
