@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'YAML'
 
-describe AdventureSaver do
+describe SaveGame do
 
   it 'saves current room from adventure' do
     adventure = Adventure.new('Testing rooms', [
@@ -12,7 +12,7 @@ describe AdventureSaver do
     ])
     adventure.travel_to(:right)
 
-    saver = AdventureSaver.new('/tmp/save_file.yaml')
+    saver = SaveGame.new('/tmp/save_file.yaml')
     saver.save(adventure)
 
     YAML.load_file('/tmp/save_file.yaml').should == { 'current_room' => :right }

@@ -1,5 +1,5 @@
 
-class AdventureSaver
+class SaveGame
 
   def initialize(save_filename)
     @save_filename = save_filename
