@@ -12,4 +12,10 @@ class SaveGame
     File.open(@save_filename, 'w') { |f| YAML.dump(save_contents, f) }
   end
 
+  def load(adventure)
+    save_contents = YAML.load_file(@save_filename)
+
+    adventure.travel_to(save_contents['current_room'])
+  end
+
 end
