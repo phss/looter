@@ -29,7 +29,7 @@ class IntroScreen < Screen
   end
 
   def options
-    [:start, :exit]
+    [:start, :continue, :exit]
   end
 
   def next_screen(option)

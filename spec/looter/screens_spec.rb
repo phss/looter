@@ -20,7 +20,7 @@ describe 'Screens' do
     end
 
     it 'has start and exit options' do
-      screen.options.should == [:start, :exit]
+      screen.options.should == [:start, :continue, :exit]
     end
 
     it 'exits as next screen if exit option is chosen' do
