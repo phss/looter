@@ -1,5 +1,6 @@
 Given(/^I have a save file "(.*?)" with "(.*?)" as current room$/) do |save_file, room|
-  save = { "current_room" => room.to_sym }
+  save = YAML.load_file("games/#{save_file}")
+  save["current_room"] = room.to_sym
 
   File.open("saves/#{save_file}", 'w') { |f| f.write(save.to_yaml) }
 end
