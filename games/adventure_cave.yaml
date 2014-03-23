@@ -1,6 +1,5 @@
 ---
 title: Adventure Cave
-current_room: start
 rooms:
   -
     id: start
