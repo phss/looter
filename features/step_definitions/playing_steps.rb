@@ -43,6 +43,10 @@ Then(/^I should be in room "(.*?)" with description "(.*?)"$/) do |expected_room
   actual_description.should == expected_description
 end
 
+After do |scenario|
+  @game_process.quit
+end
+
 def as_list(table)
   table.raw.map(&:first)
 end

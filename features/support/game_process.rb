@@ -42,6 +42,10 @@ class GameProcess
     output_lines.last
   end
 
+  def quit
+    @process.terminate
+  end
+
  private
 
   def update_raw_output
@@ -65,7 +69,7 @@ class ShellProcess
     @master, slave = PTY.open
     read, @write = IO.pipe
 
-    spawn(command, :in=>read, :out=>slave)
+    @pid = spawn(command, :in=>read, :out=>slave)
     slave.close
     read.close
   end
@@ -89,5 +93,9 @@ class ShellProcess
     end
 
     return output    
+  end
+
+  def terminate
+    Process.kill("HUP", @pid)
   end
 end
