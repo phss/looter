@@ -9,7 +9,7 @@ RSpec::Core::RakeTask.new(:spec) do |t|
 end
 
 Cucumber::Rake::Task.new(:features) do |t|
-  t.cucumber_opts = 'features --format pretty --tags ~@wip'
+  t.cucumber_opts = 'features --format pretty --quiet --tags ~@wip'
 end
 
 desc 'Run all tests'
