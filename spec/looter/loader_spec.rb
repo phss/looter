@@ -20,6 +20,19 @@ describe AdventureLoader do
     adventure.current_room.name.should == 'First room'
   end
 
+  it 'loads from configuration hash with state hash' do
+    state_hash = {
+      'current_room' => 'another'
+    }
+
+    adventure = AdventureLoader.load_from_hash(adventure_hash, state_hash)
+
+    adventure.title.should == 'Title from hash'
+    adventure.room(:start).name.should == 'First room'
+    adventure.room(:another).name.should == 'Another room'
+    adventure.current_room.name.should == 'Another room'
+  end
+
 end
 
 describe RoomLoader do
