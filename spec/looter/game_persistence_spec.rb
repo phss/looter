@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'YAML'
 
-describe SaveGame do
+describe GamePersistence do
   let(:adventure) do
     Adventure.new('Testing rooms', [
       Room.new(:start, 'First', nil, [ Exit.new(:left, "Left"), Exit.new(:right, "Right") ]),
@@ -14,7 +14,7 @@ describe SaveGame do
   it 'saves current room from adventure' do
     adventure.travel_to(:right)
 
-    save_game = SaveGame.new('/tmp/save_file.yaml')
+    save_game = GamePersistence.new('/tmp/save_file.yaml')
     save_game.save(adventure)
 
     YAML.load_file('/tmp/save_file.yaml').should == { 'current_room' => :right }
@@ -25,7 +25,7 @@ describe SaveGame do
     save = { "current_room" => :another }
     File.open("/tmp/save_file.yaml", 'w') { |f| f.write(save.to_yaml) }
 
-    save_game = SaveGame.new('/tmp/save_file.yaml')
+    save_game = GamePersistence.new('/tmp/save_file.yaml')
     save_game.load(adventure)
 
     adventure.current_room.id.should == :another

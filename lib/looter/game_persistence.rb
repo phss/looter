@@ -1,5 +1,5 @@
 
-class SaveGame
+class GamePersistence
 
   def initialize(save_filename)
     @save_filename = save_filename
