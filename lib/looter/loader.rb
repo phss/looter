@@ -3,7 +3,7 @@ class AdventureLoader
 
   def self.load_from_hash(configuration_hash)
     rooms = configuration_hash['rooms'].map { |room_hash| RoomLoader.load_from_hash(room_hash) }
-    Adventure.new(configuration_hash['title'], rooms)
+    Adventure.new(configuration_hash['title'], rooms, :start)
   end
   
 end

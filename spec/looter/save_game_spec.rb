@@ -8,7 +8,7 @@ describe SaveGame do
       Room.new(:left, 'Left', nil, [ Exit.new(:another, "Another") ]),
       Room.new(:right, 'Right', nil, [ Exit.new(:no_way, "No way") ]),
       Room.new(:another, 'Final destination', nil, [])
-    ])
+    ], :start)
   end
 
   it 'saves current room from adventure' do

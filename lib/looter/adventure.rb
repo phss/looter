@@ -2,10 +2,10 @@ class Adventure
 
   attr_reader :title, :current_room
 
-  def initialize(title, rooms)
+  def initialize(title, rooms, start_room)
     @title = title
     @rooms = rooms
-    @current_room = room(:start)
+    @current_room = room(start_room)
   end
 
   def room(room_id)

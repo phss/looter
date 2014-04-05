@@ -6,7 +6,7 @@ describe 'Screens' do
              Exit.new(:one, 'One thing'),
              Exit.new(:another, 'Another')]),
     Room.new(:last,  'Last one', 'Last description', [])
-  ])}
+  ], :start)}
 
   describe IntroScreen do
     let(:screen) { IntroScreen.new(sample_adventure) }

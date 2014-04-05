@@ -7,18 +7,18 @@ describe Adventure do
       Room.new(:first,  'This is first', nil, nil),
       Room.new(:second, 'Segundo', nil, nil),
       Room.new(:last,   'Last one', nil, nil)
-    ])
+    ], :first)
 
     adventure.room(:first).name.should == 'This is first'
     adventure.room(:second).name.should == 'Segundo'
     adventure.room(:last).name.should == 'Last one'
   end
 
-  it 'has initial room as the :start room' do
+  it 'has initial room as to whatever room is supplied as start room' do
     adventure = Adventure.new('Testing rooms', [
-      Room.new(:start, 'This is first', nil, nil),
+      Room.new(:first, 'This is first', nil, nil),
       Room.new(:last,  'Last one', nil, nil)
-    ])
+    ], :first)
 
     adventure.current_room.name.should == 'This is first'
   end
@@ -30,7 +30,7 @@ describe Adventure do
         Room.new(:left, 'Left', nil, [ Exit.new(:another, "Another") ]),
         Room.new(:right, 'Right', nil, [ Exit.new(:no_way, "No way") ]),
         Room.new(:another, 'Final destination', nil, [])
-      ])
+      ], :start)
     end
 
     it 'travels through rooms using room ids' do
