@@ -2,16 +2,14 @@ require 'spec_helper'
 require 'YAML'
 
 describe GamePersistence do
-  let(:adventure) do
-    Adventure.new('Testing rooms', [
+
+  it 'saves current room from adventure' do
+    adventure = Adventure.new('Testing rooms', [
       Room.new(:start, 'First', nil, [ Exit.new(:left, "Left"), Exit.new(:right, "Right") ]),
       Room.new(:left, 'Left', nil, [ Exit.new(:another, "Another") ]),
       Room.new(:right, 'Right', nil, [ Exit.new(:no_way, "No way") ]),
       Room.new(:another, 'Final destination', nil, [])
     ], :start)
-  end
-
-  it 'saves current room from adventure' do
     adventure.travel_to(:right)
 
     persistence = GamePersistence.new('games', '/tmp', 'save_file.yaml')
@@ -29,14 +27,13 @@ describe GamePersistence do
   end
 
   it 'loads current adventure from save game' do
-    pending
-    save = { "current_room" => :another }
-    File.open("/tmp/save_file.yaml", 'w') { |f| f.write(save.to_yaml) }
+    save = { "current_room" => 'room6' }
+    File.open("/tmp/adventure_cave.yaml", 'w') { |f| f.write(save.to_yaml) }
 
-    persistence = GamePersistence.new('/tmp/save_file.yaml')
-    persistence.load(adventure)
+    persistence = GamePersistence.new('games', '/tmp', 'adventure_cave.yaml')
+    adventure = persistence.load
 
-    adventure.current_room.id.should == :another
+    adventure.current_room.id.should == :room6
   end
 
 end

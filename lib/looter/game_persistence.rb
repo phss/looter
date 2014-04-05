@@ -20,10 +20,11 @@ class GamePersistence
     File.open(save_file, 'w') { |f| YAML.dump(save_contents, f) }
   end
 
-  def load(adventure)
-    save_contents = YAML.load_file(@save_filename)
+  def load
+    adventure_raw = YAML.load_file(game_file)
+    state_raw = YAML.load_file(save_file)
 
-    adventure.travel_to(save_contents['current_room'])
+    AdventureLoader.load_from_hash(adventure_raw, state_raw)
   end
 
  private
