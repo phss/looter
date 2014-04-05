@@ -14,10 +14,18 @@ describe GamePersistence do
   it 'saves current room from adventure' do
     adventure.travel_to(:right)
 
-    save_game = GamePersistence.new('/tmp', 'save_file.yaml')
-    save_game.save(adventure)
+    persistence = GamePersistence.new('games', '/tmp', 'save_file.yaml')
+    persistence.save(adventure)
 
     YAML.load_file('/tmp/save_file.yaml').should == { 'current_room' => 'right' }
+  end
+
+  it 'creates new adventure' do
+    persistence = GamePersistence.new('games', '/tmp', 'adventure_cave.yaml')
+
+    adventure = persistence.new_adventure
+
+    adventure.current_room.name.should == "Entrance"
   end
 
   it 'loads current adventure from save game' do
@@ -25,8 +33,8 @@ describe GamePersistence do
     save = { "current_room" => :another }
     File.open("/tmp/save_file.yaml", 'w') { |f| f.write(save.to_yaml) }
 
-    save_game = GamePersistence.new('/tmp/save_file.yaml')
-    save_game.load(adventure)
+    persistence = GamePersistence.new('/tmp/save_file.yaml')
+    persistence.load(adventure)
 
     adventure.current_room.id.should == :another
   end

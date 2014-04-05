@@ -1,9 +1,16 @@
 
 class GamePersistence
 
-  def initialize(save_dir, game_filename)
+  def initialize(game_dir, save_dir, game_filename)
+    @game_dir = game_dir
     @save_dir = save_dir
     @game_filename = game_filename
+  end
+
+  def new_adventure
+    adventure_raw = YAML.load_file(game_file)
+
+    AdventureLoader.load_from_hash(adventure_raw)
   end
 
   def save(adventure)
@@ -23,6 +30,10 @@ class GamePersistence
 
   def save_file
     File.join(@save_dir, @game_filename)
+  end
+
+  def game_file
+    File.join(@game_dir, @game_filename)
   end
 
 end

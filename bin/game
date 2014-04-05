@@ -4,15 +4,13 @@ require_relative '../lib/looter'
 require 'YAML'
 
 adventure_name = ARGV.first
-adventure_file_path = "games/#{adventure_name}.yaml"
-adventure_raw = YAML.load_file(adventure_file_path)
 
-adventure = AdventureLoader.load_from_hash(adventure_raw)
+persistence = GamePersistence.new("games", "saves", "#{adventure_name}.yaml")
+adventure = persistence.new_adventure
 
 ui = UI.new($stdin, $stdout)
 
-game = Game.new(ui, 
-  GamePersistence.new("saves", "#{adventure_name}.yaml"),
+game = Game.new(ui, persistence,
   {
     :intro => IntroScreen,
     :room => RoomScreen,
