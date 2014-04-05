@@ -8,7 +8,7 @@ class GamePersistence
 
   def save(adventure)
     save_contents = {
-      'current_room' => adventure.current_room.id
+      'current_room' => adventure.current_room.id.to_s
     }
     File.open(save_file, 'w') { |f| YAML.dump(save_contents, f) }
   end

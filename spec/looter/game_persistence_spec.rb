@@ -17,7 +17,7 @@ describe GamePersistence do
     save_game = GamePersistence.new('/tmp', 'save_file.yaml')
     save_game.save(adventure)
 
-    YAML.load_file('/tmp/save_file.yaml').should == { 'current_room' => :right }
+    YAML.load_file('/tmp/save_file.yaml').should == { 'current_room' => 'right' }
   end
 
   it 'loads current adventure from save game' do
