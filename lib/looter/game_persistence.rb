@@ -8,9 +8,13 @@ class GamePersistence
   end
 
   def new_adventure
-    adventure_raw = YAML.load_file(game_file)
+    load_adventure_with({})
+  end
 
-    AdventureLoader.load_from_hash(adventure_raw)
+  def load
+    state_hash = YAML.load_file(save_file)
+
+    load_adventure_with(state_hash)
   end
 
   def save(adventure)
@@ -18,13 +22,6 @@ class GamePersistence
       'current_room' => adventure.current_room.id.to_s
     }
     File.open(save_file, 'w') { |f| YAML.dump(save_contents, f) }
-  end
-
-  def load
-    adventure_raw = YAML.load_file(game_file)
-    state_raw = YAML.load_file(save_file)
-
-    AdventureLoader.load_from_hash(adventure_raw, state_raw)
   end
 
  private
@@ -35,6 +32,12 @@ class GamePersistence
 
   def game_file
     File.join(@game_dir, @game_filename)
+  end
+
+  def load_adventure_with(state_hash)
+    adventure_hash = YAML.load_file(game_file)
+
+    AdventureLoader.load_from_hash(adventure_hash, state_hash)
   end
 
 end
