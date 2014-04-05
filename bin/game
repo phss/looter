@@ -12,7 +12,7 @@ adventure = AdventureLoader.load_from_hash(adventure_raw)
 ui = UI.new($stdin, $stdout)
 
 game = Game.new(ui, 
-  GamePersistence.new("saves/#{adventure_name}.yaml"),
+  GamePersistence.new("saves", "#{adventure_name}.yaml"),
   {
     :intro => IntroScreen,
     :room => RoomScreen,
