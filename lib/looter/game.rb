@@ -36,7 +36,7 @@ class Game
     if screen.options
       selected_option = @ui.choose_option(screen.options)
     end
-    @current_screen = screen.next_screen(selected_option)
+    @current_screen = screen.action_for(selected_option)
   end
 
   def save(adventure)

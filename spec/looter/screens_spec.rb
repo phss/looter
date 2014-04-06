@@ -25,11 +25,11 @@ describe 'Screens' do
     end
 
     it 'exits as next screen if exit option is chosen' do
-      screen.next_screen(:exit).should == :exit
+      screen.action_for(:exit).should == :exit
     end
 
     it 'has room as next screen if start option is chosen' do
-      screen.next_screen(:start).should == :room
+      screen.action_for(:start).should == :room
     end
 
   end
@@ -50,7 +50,7 @@ describe 'Screens' do
     end
     
     it 'has room as next screen' do
-      screen.next_screen(:one).should == :room
+      screen.action_for(:one).should == :room
     end
 
   end
@@ -64,9 +64,9 @@ describe 'Screens' do
       }
     end
 
-    it 'has no options or next_screen' do
+    it 'has no options or action_for' do
       screen.options.should be_nil
-      screen.next_screen(:anything).should be_nil
+      screen.action_for(:anything).should be_nil
     end
 
   end

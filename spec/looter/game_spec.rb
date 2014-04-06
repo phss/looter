@@ -47,7 +47,7 @@ class FirstScreen < Screen
     [:last, :never]
   end
 
-  def next_screen(option)
+  def action_for(option)
     option
   end
 end
@@ -61,7 +61,7 @@ class LastScreen < Screen
     [:something, :another]
   end
 
-  def next_screen(option)
+  def action_for(option)
     nil
   end
 end

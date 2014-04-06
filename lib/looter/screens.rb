@@ -12,7 +12,7 @@ class Screen
     nil
   end
 
-  def next_screen(options)
+  def action_for(options)
     nil
   end
 
@@ -32,7 +32,7 @@ class IntroScreen < Screen
     [:start, :continue, :exit]
   end
 
-  def next_screen(option)
+  def action_for(option)
     option == :exit ? :exit : :room
   end
 
@@ -61,7 +61,7 @@ class RoomScreen < Screen
     @adventure.current_room.exit_rooms
   end
 
-  def next_screen(room_id)
+  def action_for(room_id)
     @adventure.travel_to(room_id)
     :room
   end
