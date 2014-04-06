@@ -13,9 +13,12 @@ class Screen
   end
 
   def action_for(options)
-    nil
+    ScreenResult.new(nil)
   end
 
+end
+
+ScreenResult = Struct.new(:next_screen) do
 end
 
 class IntroScreen < Screen
@@ -33,7 +36,9 @@ class IntroScreen < Screen
   end
 
   def action_for(option)
-    option == :exit ? :exit : :room
+    next_screen = option == :exit ? :exit : :room
+
+    ScreenResult.new(next_screen)
   end
 
 end
@@ -63,7 +68,7 @@ class RoomScreen < Screen
 
   def action_for(room_id)
     @adventure.travel_to(room_id)
-    :room
+    ScreenResult.new(:room)
   end
 
 end

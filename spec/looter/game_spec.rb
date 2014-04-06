@@ -48,7 +48,7 @@ class FirstScreen < Screen
   end
 
   def action_for(option)
-    option
+    ScreenResult.new(option)
   end
 end
 
@@ -62,6 +62,6 @@ class LastScreen < Screen
   end
 
   def action_for(option)
-    nil
+    ScreenResult.new(nil)
   end
 end
