@@ -7,9 +7,10 @@ describe 'Screens' do
              Exit.new(:another, 'Another')]),
     Room.new(:last,  'Last one', 'Last description', [])
   ], :start)}
+  let(:context) { { :adventure => sample_adventure } }
 
   describe IntroScreen do
-    let(:screen) { IntroScreen.new(sample_adventure) }
+    let(:screen) { IntroScreen.new(context) }
     
     it 'layouts title and main menu' do
       screen.layout.should == {
@@ -34,7 +35,7 @@ describe 'Screens' do
   end
 
   describe RoomScreen do
-    let(:screen) { RoomScreen.new(sample_adventure) }
+    let(:screen) { RoomScreen.new(context) }
 
     it 'layouts room description' do
       screen.layout.should == {
@@ -55,7 +56,7 @@ describe 'Screens' do
   end
 
   describe ExitScreen do
-    let(:screen) { ExitScreen.new(sample_adventure) }
+    let(:screen) { ExitScreen.new(context) }
 
     it 'only layouts bye' do
       screen.layout.should == {

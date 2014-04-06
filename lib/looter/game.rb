@@ -23,7 +23,9 @@ class Game
   end
 
   def load_current_screen(adventure)
-    @screens[@current_screen].new(adventure)
+    @screens[@current_screen].new({
+      :adventure => adventure
+    })
   end
 
   def show(screen)

@@ -1,7 +1,7 @@
 class Screen
 
-  def initialize(adventure)
-    @adventure = adventure
+  def initialize(context)
+    @adventure = context[:adventure]
   end
 
   def layout
