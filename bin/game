@@ -10,10 +10,13 @@ adventure = persistence.new_adventure
 
 ui = UI.new($stdin, $stdout)
 
-game = Game.new(ui, persistence,
+game = Game.new(
+  ui, 
+  persistence, 
   {
     :intro => IntroScreen,
     :room => RoomScreen,
     :exit => ExitScreen
-  }, :intro)
+  },
+  :intro)
 game.play(adventure)
