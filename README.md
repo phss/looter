@@ -5,11 +5,3 @@ A mix of a [Gamebooks](http://en.wikipedia.org/wiki/Gamebook) and [Roguelike](ht
 
 The intent is to build a text based game that generates an adventure every time you play. For now it will run in the command line, but the idea is to be web-based.
 
-###  To play
-
-    ./bin/game adventure_cave
-    
-    
-### Tests
-
-    rake # runs unit test and features
