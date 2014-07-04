@@ -1,12 +1,7 @@
-*.gem
-*.rbc
-.bundle
 .config
 tmp
 *.log
 *.swp
 *~
-.vagrant
-Vagrantfile
-todo
 saves/
+*.pyc
