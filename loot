@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
-from looter.game import Game
+from looter.game import Game, ShellDisplay
 
-Game().play()
+display = ShellDisplay()
+
+Game(display).play()
