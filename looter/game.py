@@ -5,5 +5,10 @@ class Game(object):
     self.renderer = renderer
 
   def play(self):
+    # Main loop:
+    # - Render screen
     self.renderer.banner("LOOTER")
+
+    # - Capture input
+    # - Update state
 
