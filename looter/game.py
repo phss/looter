@@ -1,15 +1,9 @@
 
 class Game(object):
 
-  def __init__(self, display):
-    self.display = display
+  def __init__(self, renderer):
+    self.renderer = renderer
 
   def play(self):
-    self.display.banner("LOOTER")
-
-class ShellDisplay(object):
-
-  def banner(self, text):
-    print text
-    
+    self.renderer.banner("LOOTER")
 
