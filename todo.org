@@ -1,0 +1,18 @@
+# What to experiment
+
+* Combat  dynamics
+** Basic functionality
+** Interactive room (throwing chairs, etc)
+* Navigation and room interaction
+** How to go from room to room
+** What to do in them
+* UI
+** Menu system
+** Character creation
+** Dialog
+** Inventory management
+* Randomness
+** Generate rooms
+** Generate names, places, etc
+** Generate whole adventure
+Specify wealth, type of dungeon (crypt, tower, cave), enemies
