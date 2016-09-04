@@ -1,8 +1,0 @@
-#!/usr/bin/env python
-
-from looter.game import Game
-from looter.renderers import *
-
-display = ShellRenderer()
-
-Game(display).play()
